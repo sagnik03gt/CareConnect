@@ -1,0 +1,89 @@
+nav ul li a:hover {
+  /* background-color: #002e5b; */
+  color: #100351;
+  transition: all 0.5s ease 0s;
+}
+nav ul li a:hover i {
+  color: #fde428;
+  transition: all 0.5s ease 0s;
+}
+nav ul li a {
+  margin-left: 20px;
+  color: #f1f2f4;
+  font-size: 18px;
+  padding: 25px 10px 25px 0;
+  display: inline-block;
+  transition: all 0.5s ease 0s;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
+}
+
+/* Profile Picture */
+.profile-pic {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.profile-menu .dropdown-menu {
+  right: 0;
+  left: unset;
+}
+.profile-menu .fa-fw {
+  margin-right: 10px;
+}
+
+.toggle-change::after {
+  border-top: 0;
+  border-bottom: 0.3em solid;
+}
+#bar {
+  background: linear-gradient(to right, #00b09b, #96c93d);
+}
+
+/* slider */
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
