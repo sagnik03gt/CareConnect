@@ -7,10 +7,22 @@ nav ul li a:hover i {
   color: #fde428;
   transition: all 0.5s ease 0s;
 }
+
+a h2 {
+  margin-left: 20px;
+  color: #f1f2f4;
+  font-size: 30px;
+  padding: 15px 10px 15px 0;
+  display: inline-block;
+  transition: all 0.5s ease 0s;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
+}
 nav ul li a {
   margin-left: 20px;
   color: #f1f2f4;
-  font-size: 18px;
+  font-size: 22px;
   padding: 25px 10px 25px 0;
   display: inline-block;
   transition: all 0.5s ease 0s;
