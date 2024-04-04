@@ -68,27 +68,19 @@ nav ul li a {
   margin: 2px 0 5px 8 px;
   padding-left: 25px;
   padding-top: 15px;
+  height: 400px;
+}
+p {
+  font-weight: 700;
+  font-size: 15px;
+}
+h1 {
+  font-size: 45px;
 }
 button a {
   text-decoration: none;
   font-weight: 700;
 }
-#info {
-  font-size: xx-large;
-  font-weight: 900;
-  font-family: Arial, Helvetica, sans-serif;
-}
-#ngobtn {
-  margin-left: 100px;
-  background-color: aqua;
-  color: rgb(11, 4, 67);
-  font-size: larger;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  border: black;
-  padding: 8px 5px 8px 5px;
-  width: 120px;
-}
-#line {
-  /* margin-left: ; */
+button a:hover {
+  color: #f1f2f4;
 }
