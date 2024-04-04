@@ -74,7 +74,6 @@ p {
   font-weight: 700;
   font-size: 15px;
 }
-<<<<<<< HEAD
 h1 {
   font-size: 45px;
 }
@@ -84,15 +83,4 @@ button a {
 }
 button a:hover {
   color: #f1f2f4;
-=======
-
-.carousel-caption h5{
-  font-size: 5rem;
-  margin-bottom: 12rem;
-  
- 
->>>>>>> c4a5e9e78c99eda931263615f06ea5ee03911cb3
-}
-.carousel-item img{
-  filter: brightness(30%);
 }
