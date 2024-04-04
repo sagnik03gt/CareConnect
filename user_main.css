@@ -23,7 +23,7 @@ nav ul li a {
   margin-left: 20px;
   color: #f1f2f4;
   font-size: 22px;
-  padding: 25px 10px 25px 0;
+  padding: 25px 20px 25px 0;
   display: inline-block;
   transition: all 0.5s ease 0s;
   font-weight: 700;
@@ -62,40 +62,33 @@ nav ul li a {
   background: linear-gradient(to right, #00b09b, #96c93d);
 }
 
-/* slider */
-
-html,
-body {
-  position: relative;
-  height: 100%;
+#des {
+  color: antiquewhite;
+  /* text-align: center; */
+  margin: 2px 0 5px 8 px;
+  padding-left: 25px;
+  padding-top: 15px;
 }
-
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
+button a {
+  text-decoration: none;
+  font-weight: 700;
 }
-
-.swiper {
-  width: 100%;
-  height: 100%;
+#info {
+  font-size: xx-large;
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#ngobtn {
+  margin-left: 100px;
+  background-color: aqua;
+  color: rgb(11, 4, 67);
+  font-size: larger;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: black;
+  padding: 8px 5px 8px 5px;
+  width: 120px;
 }
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+#line {
+  /* margin-left: ; */
 }
