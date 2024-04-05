@@ -1,3 +1,13 @@
+h1 {
+  font-size: 45px;
+}
+button a {
+  text-decoration: none;
+  font-weight: 700;
+}
+button a:hover {
+  color: #f1f2f4;
+}
 nav ul li a:hover {
   /* background-color: #002e5b; */
   color: #100351;
@@ -23,7 +33,7 @@ nav ul li a {
   margin-left: 20px;
   color: #f1f2f4;
   font-size: 22px;
-  padding: 25px 10px 25px 0;
+  padding: 25px 20px 25px 0;
   display: inline-block;
   transition: all 0.5s ease 0s;
   font-weight: 700;
@@ -62,6 +72,19 @@ nav ul li a {
   background: linear-gradient(to right, #00b09b, #96c93d);
 }
 
+#des {
+  color: antiquewhite;
+  /* text-align: center; */
+  margin: 2px 0 5px 8 px;
+  padding-left: 25px;
+  padding-top: 15px;
+  height: 400px;
+}
+p {
+  font-weight: 700;
+  font-size: 15px;
+}
+
 /* slider */
 
 html,
@@ -79,12 +102,10 @@ body {
   padding: 0;
 }
 
-.carousel-caption h5{
+.carousel-caption h5 {
   font-size: 5rem;
   margin-bottom: 12rem;
-  
- 
 }
-.carousel-item img{
+.carousel-item img {
   filter: brightness(30%);
 }
