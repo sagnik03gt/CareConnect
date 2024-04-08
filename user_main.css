@@ -1,3 +1,6 @@
+body {
+  width: 100%;
+}
 h1 {
   font-size: 45px;
 }
@@ -72,19 +75,6 @@ nav ul li a {
   background: linear-gradient(to right, #00b09b, #96c93d);
 }
 
-#des {
-  color: antiquewhite;
-  /* text-align: center; */
-  margin: 2px 0 5px 8 px;
-  padding-left: 25px;
-  padding-top: 15px;
-  height: 400px;
-}
-p {
-  font-weight: 700;
-  font-size: 15px;
-}
-
 /* slider */
 
 html,
@@ -108,4 +98,65 @@ body {
 }
 .carousel-item img {
   filter: brightness(30%);
+}
+
+/* about */
+#about_sec {
+  text-align: center;
+  color: antiquewhite;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px 50px 8px 50px;
+  /* font-size: 2px; */
+  background: linear-gradient(45deg, #00b09b, #96c93d);
+  margin-top: 10px;
+  animation: color 5s ease-in-out infinite normal;
+  background-size: 100% 100%;
+}
+
+#des {
+  color: antiquewhite;
+  /* text-align: center; */
+  margin: 2px 0 5px 8 px;
+  padding-left: 35px;
+  padding-top: 15px;
+  height: 380px;
+}
+p {
+  font-weight: 700;
+  font-size: 15px;
+}
+@keyframes color {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+#about_img {
+  margin-bottom: 25px;
+  width: 400px;
+}
+#about_card {
+  background: transparent;
+}
+#about p {
+  color: #021845;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+#list_info {
+  font-size: 15px;
+  color: rgb(110, 219, 244);
+  font-family: sans-serif;
+  font-weight: 700;
+}
+#about_sec h1 {
+  color: #100351;
+  margin-bottom: 40px;
+  font-family: "Times New Roman", Times, serif;
 }

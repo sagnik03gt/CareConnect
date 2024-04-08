@@ -73,7 +73,7 @@
         <div
           class="collapse navbar-collapse"
           id="navbarSupportedContent"
-          style="margin-left: 300px"
+          style="margin-left: 270px"
         >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -168,7 +168,8 @@
             height="650px"
           />
           <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
+            <h5>Doorstep Services</h5>
+
             <!-- <p>Some representative placeholder content for the first slide.</p> -->
           </div>
         </div>
@@ -190,11 +191,10 @@
             class="d-block w-100"
             alt="..."
             height="650px"
-          
           />
           <div class="carousel-caption d-none d-md-block">
             <h5>Third slide label</h5>
-            
+
             <!-- <p>Some representative placeholder content for the third slide.</p> -->
           </div>
         </div>
@@ -233,16 +233,78 @@
         <button
           id="ngobtn"
           class="btn btn-outline-primary"
-          style="margin-bottom: 20px"
+          style="margin-bottom: 15px"
         >
           <a href="#"> SEE NGO </a>
         </button>
       </div>
-      <div class="col-7" style="background-image: url(images/ss1.jpg)">
-        <!-- <img src="images/slide3.jpg" alt="" width="100%" height="300px" /> -->
+      <div class="col-7">
+        <img src="images/ss1.jpg" alt="" width="100%" height="380px" />
       </div>
     </div>
 
+    <!-- About section  -->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col bg-primary" id="about_sec">
+          <h1>ABOUT US</h1>
+          <img src="images/social-service.png" alt="" id="about_img" />
+          <br />
+          <h4>
+            24x7 social service model goes beyond just crisis intervention. It
+            encompasses a broad spectrum of assistance, from medical and legal
+            consultations to emotional support and financial guidance. Need help
+            with a plumbing emergency in the middle of the night? No problem.
+            Struggling with stress or anxiety? There's a trained professional
+            ready to listen and help. Dealing with bureaucratic red tape? They
+            can guide you through the process.The convenience of doorstep
+            services eliminates barriers and reduces response times, allowing
+            individuals to access the help they need swiftly. It also
+            accommodates diverse needs, catering to a wide array of issues and
+            concerns. By offering an all-encompassing support system, this
+            service promotes inclusivity and equality by ensuring that no one is
+            left behind.
+          </h4>
+          <br /><br /><br />
+          <div class="row" id="about">
+            <div class="col-md-6">
+              <img
+                src="images/about_pic1.png"
+                alt=""
+                width="350px"
+                height="350px"
+                style="border-radius: 80%"
+              />
+            </div>
+            <div class="col-md-6 mt-8 pt-lg-0" id="list_info">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                enim est totam natus voluptatum excepturi odio pariatur ratione
+                delectus molestias?
+              </p>
+              <ul>
+                <li style="list-style: none">
+                  <span class="bi bi-arrow-right-circle-fill"></span>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui,
+                  sit.
+                </li>
+                <li style="list-style: none">
+                  <span class="bi bi-arrow-right-circle-fill"></span>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Facere, dolor.
+                </li>
+                <li style="list-style: none">
+                  <span class="bi bi-arrow-right-circle-fill"></span>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Doloremque, nulla?
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
       document.querySelectorAll(".dropdown-toggle").forEach((item) => {
         item.addEventListener("click", (event) => {
@@ -254,23 +316,6 @@
             event.target.parentElement.classList.toggle("toggle-change");
           }
         });
-      });
-
-      var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
