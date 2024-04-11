@@ -108,6 +108,8 @@ body {
   padding: 20px 50px 8px 50px;
   /* font-size: 2px; */
   background: linear-gradient(45deg, #00b09b, #96c93d);
+  /* background-image: url(images/hero-bg.png); */
+  background-repeat: no-repeat;
   margin-top: 10px;
   animation: color 5s ease-in-out infinite normal;
   background-size: 100% 100%;
@@ -125,17 +127,7 @@ p {
   font-weight: 700;
   font-size: 15px;
 }
-@keyframes color {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+
 #about_img {
   margin-bottom: 25px;
   width: 400px;
@@ -159,4 +151,48 @@ p {
   color: #100351;
   margin-bottom: 40px;
   font-family: "Times New Roman", Times, serif;
+}
+
+@keyframes color {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* service */
+#service {
+  text-align: center;
+
+  /* width: 100%; */
+  background: linear-gradient(
+    45deg,
+    rgb(45, 31, 243),
+    rgb(129, 207, 235),
+    rgb(59, 156, 242),
+    rgba(35, 178, 244, 0.721)
+  );
+  background-size: 300% 300%;
+  animation: color 5s ease-in-out infinite normal;
+  padding-top: 28px;
+}
+#ser_head {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 25px;
+}
+#sub_head {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+}
+#service img:hover {
+  background-color: rgb(153, 235, 247);
+}
+#ser_head:hover {
+  color: #eee;
 }

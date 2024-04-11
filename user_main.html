@@ -42,7 +42,10 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="user_main.css" />
     <title>User_HOME</title>
@@ -277,7 +280,7 @@
                 style="border-radius: 80%"
               />
             </div>
-            <div class="col-md-6 mt-8 pt-lg-0" id="list_info">
+            <div class="col-md-6 mt-10 pt-lg-0" id="list_info">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
                 enim est totam natus voluptatum excepturi odio pariatur ratione
@@ -285,26 +288,110 @@
               </p>
               <ul>
                 <li style="list-style: none">
-                  <span class="bi bi-arrow-right-circle-fill"></span>
+                  <span
+                    class="bi bi-arrow-right-circle-fill"
+                    style="color: rgb(241, 210, 13)"
+                  ></span>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui,
                   sit.
                 </li>
                 <li style="list-style: none">
-                  <span class="bi bi-arrow-right-circle-fill"></span>
+                  <span
+                    class="bi bi-arrow-right-circle-fill"
+                    style="color: rgb(241, 210, 13)"
+                  ></span>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Facere, dolor.
                 </li>
                 <li style="list-style: none">
-                  <span class="bi bi-arrow-right-circle-fill"></span>
+                  <span
+                    class="bi bi-arrow-right-circle-fill"
+                    style="color: rgb(241, 210, 13)"
+                  ></span>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Doloremque, nulla?
                 </li>
               </ul>
             </div>
           </div>
+          <br />
         </div>
       </div>
     </div>
+    <!-- service  -->
+    <br />
+    <div class="container-fluid">
+      <div class="row" id="service">
+        <div class="col-md-4">
+          <img
+            src="images/24-hours.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">24*7 SUPPORT</p>
+          <p id="sub_head">You call at any time we are always open 24x7</p>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="images/ask.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">DOORSTEP CARE</p>
+          <p id="sub_head">We will be at your doorstep aby only a call</p>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="images/call.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">ANY TIME CALL</p>
+          <p id="sub_head">
+            Anybody can call us after register with us and we will help them as
+            much as possible
+          </p>
+        </div>
+        <span class="mt-5"></span>
+        <div class="col-md-4">
+          <img
+            src="images/route.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">ANY LOCATION</p>
+          <p id="sub_head">
+            Anybody can call us and our services will be location based from
+            anywhere
+          </p>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="images/helphand.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">HELPING HAND</p>
+          <p id="sub_head">
+            We will always be ready to serve as community's helping hand
+          </p>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="images/needs.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">SOCIAL REQUIREMENT</p>
+          <p id="sub_head">
+            We will provide all the requirements as social worker which will
+            help our society
+          </p>
+        </div>
+      </div>
+    </div>
+    <br />
+
     <script>
       document.querySelectorAll(".dropdown-toggle").forEach((item) => {
         item.addEventListener("click", (event) => {
@@ -320,7 +407,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Initialize Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
