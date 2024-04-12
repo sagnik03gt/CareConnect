@@ -9,51 +9,33 @@ document.querySelectorAll(".dropdown-toggle").forEach((item) => {
     }
   });
 });
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 3,
-  centeredSlides: true,
-  spaceBetween: 30,
-  pagination: {
-    el: ".swiper-pagination",
-    type: "fraction",
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
 
-var appendNumber = 4;
-var prependNumber = 1;
-document
-  .querySelector(".prepend-2-slides")
-  .addEventListener("click", function (e) {
-    e.preventDefault();
-    swiper.prependSlide([
-      '<div class="swiper-slide">Slide ' + --prependNumber + "</div>",
-      '<div class="swiper-slide">Slide ' + --prependNumber + "</div>",
-    ]);
-  });
-document
-  .querySelector(".prepend-slide")
-  .addEventListener("click", function (e) {
-    e.preventDefault();
-    swiper.prependSlide(
-      '<div class="swiper-slide">Slide ' + --prependNumber + "</div>"
-    );
-  });
-document.querySelector(".append-slide").addEventListener("click", function (e) {
-  e.preventDefault();
-  swiper.appendSlide(
-    '<div class="swiper-slide">Slide ' + ++appendNumber + "</div>"
-  );
+document.addEventListener("DOMContentLoaded", function () {
+  const restaurantContainer = document.querySelector(".card-slider");
+  const leftRButton = document.querySelector(".restaurant-arrow-left");
+  const rightRButton = document.querySelector(".restaurant-arrow-right");
+
+  function updateButtonState() {
+    leftRButton.disabled = restaurantContainer.scrollLeft <= 0;
+    rightRButton.disabled =
+      restaurantContainer.scrollLeft + restaurantContainer.offsetWidth >=
+      restaurantContainer.scrollWidth;
+  }
+
+  leftRButton.onclick = function () {
+    restaurantContainer.scrollBy({
+      left: -restaurantContainer.offsetWidth / 2,
+      behavior: "smooth",
+    });
+  };
+
+  rightRButton.onclick = function () {
+    restaurantContainer.scrollBy({
+      left: restaurantContainer.offsetWidth / 2,
+      behavior: "smooth",
+    });
+  };
+
+  restaurantContainer.addEventListener("scroll", updateButtonState);
+  updateButtonState();
 });
-document
-  .querySelector(".append-2-slides")
-  .addEventListener("click", function (e) {
-    e.preventDefault();
-    swiper.appendSlide([
-      '<div class="swiper-slide">Slide ' + ++appendNumber + "</div>",
-      '<div class="swiper-slide">Slide ' + ++appendNumber + "</div>",
-    ]);
-  });
