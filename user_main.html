@@ -42,7 +42,10 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="user_main.css" />
     <title>User_HOME</title>
@@ -73,7 +76,7 @@
         <div
           class="collapse navbar-collapse"
           id="navbarSupportedContent"
-          style="margin-left: 300px"
+          style="margin-left: 270px"
         >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -168,7 +171,8 @@
             height="650px"
           />
           <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
+            <h5>Doorstep Services</h5>
+
             <!-- <p>Some representative placeholder content for the first slide.</p> -->
           </div>
         </div>
@@ -190,11 +194,10 @@
             class="d-block w-100"
             alt="..."
             height="650px"
-          
           />
           <div class="carousel-caption d-none d-md-block">
             <h5>Third slide label</h5>
-            
+
             <!-- <p>Some representative placeholder content for the third slide.</p> -->
           </div>
         </div>
@@ -233,49 +236,440 @@
         <button
           id="ngobtn"
           class="btn btn-outline-primary"
-          style="margin-bottom: 20px"
+          style="margin-bottom: 15px"
         >
-          <a href="#"> SEE NGO </a>
+          <a href="#"> See NGO </a>
         </button>
       </div>
-      <div class="col-7" style="background-image: url(images/ss1.jpg)">
-        <!-- <img src="images/slide3.jpg" alt="" width="100%" height="300px" /> -->
+      <div class="col-7">
+        <img src="images/ss1.jpg" alt="" width="100%" height="380px" />
       </div>
     </div>
 
-    <script>
-      document.querySelectorAll(".dropdown-toggle").forEach((item) => {
-        item.addEventListener("click", (event) => {
-          if (event.target.classList.contains("dropdown-toggle")) {
-            event.target.classList.toggle("toggle-change");
-          } else if (
-            event.target.parentElement.classList.contains("dropdown-toggle")
-          ) {
-            event.target.parentElement.classList.toggle("toggle-change");
-          }
-        });
-      });
+    <!-- About section  -->
 
-      var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col bg-primary" id="about_sec">
+          <h1>ABOUT US</h1>
+          <img src="images/social-service.png" alt="" id="about_img" />
+          <br />
+          <h4>
+            24x7 social service model goes beyond just crisis intervention. It
+            encompasses a broad spectrum of assistance, from medical and legal
+            consultations to emotional support and financial guidance. Need help
+            with a plumbing emergency in the middle of the night? No problem.
+            Struggling with stress or anxiety? There's a trained professional
+            ready to listen and help. Dealing with bureaucratic red tape? They
+            can guide you through the process.The convenience of doorstep
+            services eliminates barriers and reduces response times, allowing
+            individuals to access the help they need swiftly. It also
+            accommodates diverse needs, catering to a wide array of issues and
+            concerns. By offering an all-encompassing support system, this
+            service promotes inclusivity and equality by ensuring that no one is
+            left behind.
+          </h4>
+          <br /><br /><br />
+          <div class="row" id="about">
+            <div class="col-md-6">
+              <img
+                src="images/about_pic1.png"
+                alt=""
+                width="350px"
+                height="350px"
+                style="border-radius: 80%"
+              />
+            </div>
+            <div class="col-md-6 mt-10 pt-lg-0" id="list_info">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                enim est totam natus voluptatum excepturi odio pariatur ratione
+                delectus molestias?
+              </p>
+              <ul>
+                <li style="list-style: none">
+                  <span
+                    class="bi bi-arrow-right-circle-fill"
+                    style="color: rgb(241, 210, 13)"
+                  ></span>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui,
+                  sit.
+                </li>
+                <li style="list-style: none">
+                  <span
+                    class="bi bi-arrow-right-circle-fill"
+                    style="color: rgb(241, 210, 13)"
+                  ></span>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Facere, dolor.
+                </li>
+                <li style="list-style: none">
+                  <span
+                    class="bi bi-arrow-right-circle-fill"
+                    style="color: rgb(241, 210, 13)"
+                  ></span>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Doloremque, nulla?
+                </li>
+              </ul>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <!-- service  -->
+    <br />
+    <div class="container-fluid">
+      <div class="row" id="service">
+        <div class="col-md-4">
+          <img
+            src="images/24-hours.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">24*7 SUPPORT</p>
+          <p id="sub_head">You call at any time we are always open 24x7</p>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="images/ask.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">DOORSTEP CARE</p>
+          <p id="sub_head">We will be at your doorstep aby only a call</p>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="images/call.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">ANY TIME CALL</p>
+          <p id="sub_head">
+            Anybody can call us after register with us and we will help them as
+            much as possible
+          </p>
+        </div>
+        <span class="mt-5"></span>
+        <div class="col-md-4">
+          <img
+            src="images/route.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">ANY LOCATION</p>
+          <p id="sub_head">
+            Anybody can call us and our services will be location based from
+            anywhere
+          </p>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="images/helphand.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">HELPING HAND</p>
+          <p id="sub_head">
+            We will always be ready to serve as community's helping hand
+          </p>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="images/needs.png"
+            alt=""
+            class="border border-dark p-2 mb-3"
+          />
+          <p class="font-weight-bold" id="ser_head">SOCIAL REQUIREMENT</p>
+          <p id="sub_head">
+            We will provide all the requirements as social worker which will
+            help our society
+          </p>
+        </div>
+      </div>
+    </div>
+    <br />
+    
+
+    <div class="container-fluid" id="ngo_list" >
+      <div class="restaurant-container">
+      <div class="label-container">
+        <h2>Top NGOs in your <span class="">Area</span></h2>
+        <button class="restaurant-arrow-left"><i class="bi bi-arrow-left"></i></button>
+        <button class="restaurant-arrow-right"><i class="bi bi-arrow-right"></i></button>
+      </div>
+      <div class="card-slider">
+        <div class="restaurant-card">
+            <div class="image-container">
+                <img src="images/ngo1.png" alt="">
+             
+            </div>
+            <h3 class="restaurant-name">NGO Name</h3>
+            <div class="info-container">
+                <div class="info-row">
+                    <div class="rating">
+                        <span class="rating-star"><i class="bi bi-star-fill star"></i></span>
+                        <span class="review-count">Distance</span>
+                    </div>
+                    <div class="delivery-info">
+                        <i class="bi bi-dot"></i> 15-20 mins
+                    </div>
+                </div>
+                <p>Owner Name</p>
+                <button
+          id="ngobtn1"
+          class="btn btn-outline-primary"
+          style="margin-bottom: 15px"
+        >
+          <a href="#"> CONTACT NOW </a>
+        </button>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <div class="image-container">
+                <img src="images/ngo2.png" alt="">
+             
+            </div>
+            <h3 class="restaurant-name">NGO Name</h3>
+            <div class="info-container">
+                <div class="info-row">
+                    <div class="rating">
+                        <span class="rating-star"><i class="bi bi-star-fill star"></i></span>
+                        <span class="review-count">Distance</span>
+                    </div>
+                    <div class="delivery-info">
+                        <i class="bi bi-dot"></i> 15-20 mins
+                    </div>
+                </div>
+                <p>Owner Name</p>
+                <button
+          id="ngobtn1"
+          class="btn btn-outline-primary"
+          style="margin-bottom: 15px"
+        >
+          <a href="#"> CONTACT NOW </a>
+        </button>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <div class="image-container">
+                <img src="images/ngo3.png" alt="">
+             
+            </div>
+            <h3 class="restaurant-name">NGO Name</h3>
+            <div class="info-container">
+                <div class="info-row">
+                    <div class="rating">
+                        <span class="rating-star"><i class="bi bi-star-fill star"></i></span>
+                        <span class="review-count">Distance</span>
+                    </div>
+                    <div class="delivery-info">
+                        <i class="bi bi-dot"></i> 15-20 mins
+                    </div>
+                </div>
+                <p>Owner Name</p>
+                <button
+          id="ngobtn1"
+          class="btn btn-outline-primary"
+          style="margin-bottom: 15px"
+        >
+          <a href="#"> CONTACT NOW </a>
+        </button>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <div class="image-container">
+                <img src="images/ngo1.png" alt="">
+             
+            </div>
+            <h3 class="restaurant-name">NGO Name</h3>
+            <div class="info-container">
+                <div class="info-row">
+                    <div class="rating">
+                        <span class="rating-star"><i class="bi bi-star-fill star"></i></span>
+                        <span class="review-count">Distance</span>
+                    </div>
+                    <div class="delivery-info">
+                        <i class="bi bi-dot"></i> 15-20 mins
+                    </div>
+                </div>
+                <p>Owner Name</p>
+                <button
+          id="ngobtn1"
+          class="btn btn-outline-primary"
+          style="margin-bottom: 15px"
+        >
+          <a href="#"> CONTACT NOW </a>
+        </button>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <div class="image-container">
+                <img src="images/ngo2.png" alt="">
+             
+            </div>
+            <h3 class="restaurant-name">NGO Name</h3>
+            <div class="info-container">
+                <div class="info-row">
+                    <div class="rating">
+                        <span class="rating-star"><i class="bi bi-star-fill star"></i></span>
+                        <span class="review-count">Distance</span>
+                    </div>
+                    <div class="delivery-info">
+                        <i class="bi bi-dot"></i> 15-20 mins
+                    </div>
+                </div>
+                <p>Owner Name</p>
+                <button
+          id="ngobtn1"
+          class="btn btn-outline-primary"
+          style="margin-bottom: 15px"
+        >
+          <a href="#"> CONTACT NOW </a>
+        </button>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <div class="image-container">
+                <img src="images/ngo3.png">
+                
+            </div>
+            <h3 class="restaurant-name">NGO Name</h3>
+            <div class="info-container">
+                <div class="info-row">
+                    <div class="rating">
+                        <span class="rating-star"><i class="bi bi-star-fill star"></i></span>
+                        <span class="review-count">Distance</span>
+                    </div>
+                    <div class="delivery-info">
+                        <i class="bi bi-dot"></i> 15-20 mins
+                    </div>
+                </div>
+                <p>Owner Name</p>
+                <button
+          id="ngobtn1"
+          class="btn btn-outline-primary"
+          style="margin-bottom: 15px"
+        >
+          <a href="#"> CONTACT NOW </a>
+        </button>
+            </div>
+        </div>
+      </div>
+    </div>
+<br>
+    <!-- Footer  -->
+
+    <!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom bg-black">
+    <!-- Left -->
+    <!-- <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div> -->
+    <!-- Left -->
+
+    <!-- Right -->
+    <!-- <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <img src="images/help.png" width="50px" alt="">Care Connect
+          </h6>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, quia.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+       
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            TECH TITANS
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">HOME</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">ABOUT</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">SERVICES</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">NGO</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> JISCE, Kalyani,W.B,INDIA</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            tech#titans2k24@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2024 TECH TITANS FINAL PROJECT
+    
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+    
+   <script src="user_main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Initialize Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
