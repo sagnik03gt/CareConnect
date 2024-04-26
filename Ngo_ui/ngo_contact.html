@@ -29,7 +29,7 @@
         id="navbar"
       >
         <img src="\images\help.png" alt="" width="50px" />
-        <a class="navbar-brand" id="title" href="#"
+        <a class="navbar-brand" id="title" href="index.html"
           >CareConnect <span>Ngo</span></a
         >
 
@@ -78,35 +78,126 @@
           ><span class="side_tab">Service List</span></a
         >
       </div>
-      <div class="main">
+      <div class="main" style="margin-top: 50px" id="main">
         <div class="row">
-          <div class="col-md-6 mr-5" id="contact">
-            <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-2"></div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <img
+                  src="/images/location.png"
+                  alt=""
+                  width="70px"
+                  class="mb-4"
+                />
+                <h5 class="card-title">Location</h5>
+                <p class="card-text">Kalyani A5, Nadia</p>
+                <p class="card-text" style="font-weight: 700">West Bengal</p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
             </div>
           </div>
-          <div class="col-md-5" id="contact"></div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <img src="/images/gmail.png" alt="" width="70px" class="mb-4" />
+                <h5 class="card-title">Email Us</h5>
+                <p class="card-text">abc@gmail.com</p>
+                <p class="card-text" style="font-weight: 700">
+                  tech#2k24@gmail.com
+                </p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title mb-3">Contact with us</h3>
+                <form>
+                  <div class="row">
+                    <div class="col-md-5 mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Your Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="col-md-5 mb-3">
+                      <label for="exampleInputPassword1" class="form-label"
+                        >Enter your email</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Messege</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <img src="/images/24-7.png" alt="" width="70px" class="mb-4" />
+                <h5 class="card-title">Any time 24*7</h5>
+                <p class="card-text">Anywhere</p>
+                <p class="card-text" style="font-weight: 700">At any moment</p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <img src="/images/phone.png" alt="" width="70px" class="mb-4" />
+                <h5 class="card-title">Phone</h5>
+                <p class="card-text">+91 6574893214</p>
+                <p class="card-text" style="font-weight: 700">5478963214</p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     <script>
       function toggleNav() {
         var sidenav = document.getElementById("sidenav");
         var side_tab = document.getElementsByClassName("side_tab");
         var main_div = document.getElementById("main");
-        if (sidenav.style.width === "200px") {
+        if (sidenav.style.width === "250px") {
           sidenav.style.width = "50px";
           for (var i = 0; i < side_tab.length; i++) {
             side_tab[i].style.visibility = "hidden";
           }
           main_div.style.marginLeft = "60px";
         } else {
-          sidenav.style.width = "200px";
+          sidenav.style.width = "250px";
           for (var i = 0; i < side_tab.length; i++) {
             side_tab[i].style.visibility = "visible ";
           }
-          main_div.style.marginLeft = "220px";
+          main_div.style.marginLeft = "250px";
         }
       }
     </script>

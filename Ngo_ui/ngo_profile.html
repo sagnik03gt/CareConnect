@@ -78,7 +78,7 @@
           ><span class="side_tab">Service List</span></a
         >
       </div>
-      <div class="main">
+      <div class="main" id="main">
         <div class="row mt-5">
           <div class="col-md-4 mr-5 mb-5" id="profile_pic">
             <img
@@ -93,47 +93,86 @@
           <div class="col-md-6" id="profile_det">
             <h4 class="mb-5">Profile Details</h4>
             <div class="row mb-2">
-              <div class="col-md-3"><h6>Ngo name</h6></div>
-              <div class="col-md-2">abc</div>
+              <div
+                class="col-md-3 border border-primary rounded ml-2 pl-1 pt-1"
+              >
+                <h6>Ngo name</h6>
+              </div>
+              <div
+                class="col-md-6 border border-success rounded ml-2 pl-1 pt-1"
+              >
+                abc
+              </div>
             </div>
             <div class="row mb-2">
-              <div class="col-md-3"><h6>Address</h6></div>
-              <div class="col-md-2">abc</div>
+              <div
+                class="col-md-3 border border-primary rounded ml-2 pl-1 pt-1"
+              >
+                <h6>Address</h6>
+              </div>
+              <div
+                class="col-md-6 border border-success rounded ml-2 pl-1 pt-1"
+              >
+                abc
+              </div>
             </div>
             <div class="row mb-2">
-              <div class="col-md-3"><h6>Ngo id</h6></div>
-              <div class="col-md-2">123</div>
+              <div
+                class="col-md-3 border border-primary rounded ml-2 pl-1 pt-1"
+              >
+                <h6>Ngo id</h6>
+              </div>
+              <div
+                class="col-md-6 border border-success rounded ml-2 pl-1 pt-1"
+              >
+                123
+              </div>
             </div>
             <div class="row mb-2">
-              <div class="col-md-3"><h6>Email</h6></div>
-              <div class="col-md-2">abc@gmail.com</div>
+              <div
+                class="col-md-3 border border-primary rounded ml-2 pl-1 pt-1"
+              >
+                <h6>Email</h6>
+              </div>
+              <div
+                class="col-md-6 border border-success rounded ml-2 pl-1 pt-1"
+              >
+                abc@gmail.com
+              </div>
             </div>
             <div class="row mb-2">
-              <div class="col-md-3"><h6>Contact No.</h6></div>
-              <div class="col-md-2">9765432345</div>
+              <div
+                class="col-md-3 border border-primary rounded ml-2 pl-1 pt-1"
+              >
+                <h6>Contact No.</h6>
+              </div>
+              <div
+                class="col-md-6 border border-success rounded ml-2 pl-1 pt-1"
+              >
+                9765432345
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <script>
-      // JavaScript for toggling sidebar
       function toggleNav() {
         var sidenav = document.getElementById("sidenav");
         var side_tab = document.getElementsByClassName("side_tab");
         var main_div = document.getElementById("main");
-        if (sidenav.style.width === "200px") {
+        if (sidenav.style.width === "250px") {
           sidenav.style.width = "50px";
           for (var i = 0; i < side_tab.length; i++) {
             side_tab[i].style.visibility = "hidden";
           }
           main_div.style.marginLeft = "60px";
         } else {
-          sidenav.style.width = "200px";
+          sidenav.style.width = "250px";
           for (var i = 0; i < side_tab.length; i++) {
             side_tab[i].style.visibility = "visible ";
           }
-          main_div.style.marginLeft = "220px";
+          main_div.style.marginLeft = "250px";
         }
       }
     </script>

@@ -78,24 +78,83 @@
           ><span class="side_tab">Service List</span></a
         >
       </div>
+      <div class="main" id="main">
+        <div class="container mt-5">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <h2 class="text-center mb-4">ADD MEMBER</h2>
+              <form id="member_form">
+                <div class="form-group">
+                  <label for="name-field">Member Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name-field"
+                    placeholder="Enter your name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email-field"> Member Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email-field"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phone-field">Phone</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="phone-field"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="aadhar-field">Aadhar Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="aadhar-field"
+                    placeholder="Enter your Aadhar number"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="address-field">Address</label>
+                  <textarea
+                    class="form-control"
+                    id="address-field"
+                    rows="3"
+                    placeholder="Enter your address"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  ADD
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
       function toggleNav() {
         var sidenav = document.getElementById("sidenav");
         var side_tab = document.getElementsByClassName("side_tab");
         var main_div = document.getElementById("main");
-        if (sidenav.style.width === "200px") {
+        if (sidenav.style.width === "250px") {
           sidenav.style.width = "50px";
           for (var i = 0; i < side_tab.length; i++) {
             side_tab[i].style.visibility = "hidden";
           }
           main_div.style.marginLeft = "60px";
         } else {
-          sidenav.style.width = "200px";
+          sidenav.style.width = "250px";
           for (var i = 0; i < side_tab.length; i++) {
             side_tab[i].style.visibility = "visible ";
           }
-          main_div.style.marginLeft = "220px";
+          main_div.style.marginLeft = "250px";
         }
       }
     </script>

@@ -1,16 +1,22 @@
 .sidenav {
-  height: 95%;
-  width: 200px;
+  height: 100%;
+  width: 250px;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #c8e0f9; /* Light gray background color */
+  background: linear-gradient(45deg, #09e7a5, #3da8c9);
+  border-radius: 15px;
   padding-top: 20px;
   z-index: 1;
   overflow-x: hidden;
   transition: 0.5s;
   margin-top: 70px;
   margin-left: 15px;
+}
+@media only screen and (max-width: 768px) {
+  .sidenav {
+    width: 50px;
+  }
 }
 .sidenav a {
   padding: 10px 15px;
@@ -22,9 +28,11 @@
 }
 .sidenav a:hover {
   /* background-color: #82f5bd; */
-  border-radius: 20px;
-  -webkit-box-shadow: 0 0 15px 10px #ffff2e;
-  box-shadow: 0 0 15px 10px #ffff2e;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 15px 10px #101849;
+  box-shadow: 0 0 15px 10px #3748ba;
+  transition: 0.5s;
+  color: aliceblue;
 }
 .main {
   margin-left: 250px; /* Adjust this value to match the width of the sidenav */
@@ -53,6 +61,12 @@ i {
   font-weight: 300;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
+#navbar {
+  position: sticky;
+  top: 0;
+  /* overflow: hidden; */
+  z-index: 100000;
+}
 /* .sidenav span {
   padding-left: 8px;
 } */
@@ -68,12 +82,7 @@ i {
     background-position: 0% 50%;
   }
 }
-.sidenav {
-  background: linear-gradient(45deg, #00b09b, #96c93d);
-  background-size: 100% 100%;
-  animation: color 5s ease-in-out infinite normal;
-  border-radius: 25px;
-}
+
 #navbar {
   padding-left: 8px;
   padding-right: 8px;
@@ -149,9 +158,23 @@ i {
 
 #contact {
   border-radius: 15px;
-  -webkit-box-shadow: 0 0 25px 2px #e6e6e3;
-  box-shadow: 0 0 25px 2px #e1e1e0;
+  border: 5px solid #000;
+  /* -webkit-box-shadow: 0 0 25px 2px #e6e6e3;
+  box-shadow: 0 0 25px 2px #e1e1e0; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   padding: 50px 5px 8px 5px;
+}
+
+/* footer  */
+.footer {
+  background-color: #8ae9e9;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+}
+#member_form {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
 }
