@@ -18,8 +18,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="index.css" />
-    <title>CareConnect_Ngo</title>
+    <link rel="stylesheet" href="agent.css" />
+    <title>CareConnect_Agent</title>
   </head>
   <body style="background-color: rgb(248, 251, 227)">
     <div class="container-fluid">
@@ -48,33 +48,32 @@
             width="30px"
           />
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="agent_profile.html">My Profile</a>
+            <a class="dropdown-item" href="#">Log Out</a>
+            <!-- <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
         </div>
       </nav>
 
       <!-- sidebar -->
       <div class="sidenav" id="sidenav">
-        <a href="ngo_profile.html"
+        <a href="index.html"
+          ><img src="/images/dashboard.png" class="mr-1" alt="" /><span
+            class="side_tab"
+            >Dashboard</span
+          ></a
+        >
+        <a href="agent_profile.html"
           ><i class="bi bi-person-lines-fill"></i
           ><span class="side_tab">Profile</span></a
         >
-        <a href="ngo_members.html"
-          ><i class="bi bi-people-fill"></i
-          ><span class="side_tab">Members</span></a
-        >
-        <a href="ngo_contact.html"
+
+        <a href="service_alert.html"
           ><i class="bi bi-telephone-plus-fill"></i
-          ><span class="side_tab">Contact</span></a
+          ><span class="side_tab">Service Alert</span></a
         >
-        <a href="ngo_addmember.html"
+        <a href="service_done.html"
           ><i class="bi bi-person-plus-fill"></i
-          ><span class="side_tab"> Member Plus</span></a
-        >
-        <a href="ngo_servicelist.html"
-          ><i class="bi bi-arrow-down-right-square-fill"></i
           ><span class="side_tab">Service List</span></a
         >
       </div>
@@ -87,44 +86,68 @@
               width="75px"
               class="mb-2"
             />
-            <h5>Ngo Owner Name</h5>
-            <h6>Owner</h6>
+            <h5>Agent Name</h5>
+            <h6>Ngo name</h6>
           </div>
-          <div class="col-md-6" id="profile_det">
+          <div class="col-md-7" id="profile_det">
             <h1 class="mb-5" style="color: honeydew">Profile Details</h1>
             <div class="row mb-2">
               <div class="col-md-4 ml-2 pl-1 pt-1">
-                <h4>Ngo name</h4>
+                <h4>Name</h4>
               </div>
-              <div class="col-md-6 ml-2 pl-1 pt-1">abc</div>
+              <div class="col-md-4 ml-2 pl-1 pt-1">abc</div>
             </div>
             <div class="row mb-2">
               <div class="col-md-4 ml-2 pl-1 pt-1">
                 <h4>Address</h4>
               </div>
-              <div class="col-md-6 ml-2 pl-1 pt-1">abc</div>
+              <div class="col-md-4 ml-2 pl-1 pt-1">abc</div>
             </div>
             <div class="row mb-2">
               <div class="col-md-4 ml-2 pl-1 pt-1">
                 <h4>Ngo id</h4>
               </div>
-              <div class="col-md-6 ml-2 pl-1 pt-1">123</div>
+              <div class="col-md-4 ml-2 pl-1 pt-1">123</div>
             </div>
             <div class="row mb-2">
               <div class="col-md-4 ml-2 pl-1 pt-1">
                 <h4>Email</h4>
               </div>
-              <div class="col-md-6 ml-2 pl-1 pt-1">abc@gmail.com</div>
+              <div class="col-md-4 ml-2 pl-1 pt-1">abc@gmail.com</div>
             </div>
             <div class="row mb-2">
               <div class="col-md-4 ml-2 pl-1 pt-1">
-                <h4>Contact No.</h4>
+                <h4>Contact</h4>
               </div>
-              <div class="col-md-6 ml-2 pl-1 pt-1">9765432345</div>
+              <div class="col-md-4 ml-2 pl-1 pt-1">9765432345</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-md-4 ml-2 pl-1 pt-1">
+                <h4>Password</h4>
+              </div>
+              <div class="col-md-4 ml-2 pl-1 pt-1">9765abcs</div>
             </div>
           </div>
         </div>
+        <footer
+          class="footer bg-light text-white text-center py-3"
+          style="margin: 0"
+        >
+          <div class="container" style="color: black">
+            <span style="padding-bottom: 10px"
+              >&copy; 2024 CareConnect #TECHTITANS</span
+            >
+          </div>
+        </footer>
       </div>
+      <!-- <footer
+        class="footer bg-secondary text-white text-center py-3"
+        style="bottom: 0"
+      >
+        <div class="container">
+          <span>&copy; 2024 CareConnect #TECHTITANS</span>
+        </div>
+      </footer> -->
     </div>
     <script>
       function toggleNav() {

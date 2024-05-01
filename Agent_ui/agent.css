@@ -68,8 +68,8 @@ i {
   z-index: 100000;
 }
 /* .sidenav span {
-  padding-left: 8px;
-} */
+    padding-left: 8px;
+  } */
 
 @keyframes color {
   0% {
@@ -90,7 +90,7 @@ i {
 #card {
   border: #c8e0f9;
   border-radius: 10px;
-  background-color: rgb(200, 235, 246);
+  background-color: rgb(220, 207, 249);
   -webkit-box-shadow: 0 0 25px 2px #e6e6e3;
   box-shadow: 0 0 25px 2px #e1e1e0;
   padding: 8px 2px 5px 8px;
@@ -103,7 +103,14 @@ i {
   box-shadow: 0 0 25px 2px #a2a2a0;
 }
 #card_pic {
-  border-radius: 50%;
+  /* border-radius: 50%; */
+  height: 80px;
+  margin-bottom: 8px;
+}
+#card_heading {
+  color: rgb(4, 2, 71);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: xx-large;
 }
 
 /* profile */
@@ -126,13 +133,12 @@ i {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   padding: 50px 5px 8px 5px;
-  background: linear-gradient(
-    45deg,
-    rgb(83, 246, 246),
-    rgb(129, 207, 235),
-    rgb(186, 247, 245),
-    rgba(35, 244, 202, 0.721)
+  background: radial-gradient(
+    circle,
+    rgba(251, 246, 63, 1) 0%,
+    rgba(19, 221, 245, 1) 100%
   );
+
   background-size: 300% 300%;
   animation: color 5s ease-in-out infinite normal;
   height: 250px;
@@ -145,13 +151,13 @@ i {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: left;
   padding: 10px 5px 8px 15px;
-  background: linear-gradient(
-    45deg,
-    rgba(107, 197, 231, 1) 0%,
-    rgba(17, 105, 156, 0.9725140056022409) 44%,
-    rgba(0, 212, 255, 1) 100%
+  background: radial-gradient(
+    circle,
+    rgba(174, 238, 238, 1) 0%,
+    rgba(99, 194, 240, 1) 100%
   );
-  height: 500px;
+
+  /* height: 500px; */
   font-size: 25px;
   background-size: 300% 300%;
   animation: color 5s ease-in-out infinite normal;
@@ -160,8 +166,26 @@ i {
 #profile_det h4 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: x-large;
-  color: #c8e0f9;
+  color: #022d5a;
   margin-bottom: 8px;
+  font-weight: bold;
+}
+#service_hist {
+  -webkit-box-shadow: 0 0 25px 2px #e6e6e3;
+  box-shadow: 0 0 25px 2px #e1e1e0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
+  padding: 10px 5px 8px 15px;
+  background: radial-gradient(
+    circle,
+    rgba(63, 251, 217, 1) 0%,
+    rgba(207, 251, 114, 1) 100%
+  );
+
+  /* height: 500px; */
+  font-size: 25px;
+  background-size: 300% 300%;
+  animation: color 5s ease-in-out infinite normal;
   font-weight: bold;
 }
 /* contact */
@@ -170,7 +194,7 @@ i {
   border-radius: 15px;
   border: 5px solid #000;
   /* -webkit-box-shadow: 0 0 25px 2px #e6e6e3;
-  box-shadow: 0 0 25px 2px #e1e1e0; */
+    box-shadow: 0 0 25px 2px #e1e1e0; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   padding: 50px 5px 8px 5px;
@@ -178,12 +202,14 @@ i {
 
 /* footer  */
 .footer {
-  background-color: #8ae9e9;
-  padding: 20px 0;
+  /* background-color: #8ae9e9; */
+  /* padding: 20px 0; */
+  bottom: 0;
   text-align: center;
   position: fixed;
   width: 100%;
 }
+
 #member_form {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 700;
