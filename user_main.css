@@ -23,7 +23,14 @@ nav ul li a:hover i {
   color: #fde428;
   transition: all 0.5s ease 0s;
 }
-
+#profile_dropdown a {
+  font-size: 5px;
+}
+#profile_dropdown:hover {
+  color: #100351;
+  width: auto;
+  background-color: #96c93d;
+}
 a h2 {
   margin-left: 20px;
   color: #f1f2f4;
