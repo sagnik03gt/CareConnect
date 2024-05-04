@@ -509,3 +509,47 @@ button {
   margin-left: 20px;
   width: 98%;
 }
+/* profile_section_user */
+#user_profile_heading {
+  color: cornflowerblue;
+  padding: 3px 0 3px 8px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: xx-large;
+  font-weight: 700;
+}
+#main_page_link {
+  font-size: large;
+  color: #100351;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  float: right;
+}
+#main_page_link:hover {
+  color: rgb(245, 245, 245);
+}
+#main_page_small {
+  visibility: hidden;
+}
+
+#user_profile_det {
+  /* border: 2px solid black; */
+  border-radius: 15px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #eafccc;
+}
+#profile_pic {
+  border-radius: 15px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #eafccc;
+  height: 200px;
+}
+@media only screen and (max-width: 600px) {
+  #main_page_link {
+    visibility: hidden;
+  }
+  #main_page_small {
+    visibility: visible;
+  }
+}
