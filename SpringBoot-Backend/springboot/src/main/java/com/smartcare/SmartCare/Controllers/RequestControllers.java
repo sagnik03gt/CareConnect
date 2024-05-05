@@ -43,4 +43,9 @@ public class RequestControllers {
                                              @PathVariable String id){
         return new ResponseEntity<>(requestServices.allRequest(type,id),HttpStatus.FOUND);
     }
+
+    @GetMapping("/req-from-redis/{ngoid}")
+    public ResponseEntity<Object> requestFromRedis(@PathVariable String ngoid){
+        return new ResponseEntity<>(requestServices.gettingReqFromRedisForNgo(ngoid),HttpStatus.FOUND);
+    }
 }

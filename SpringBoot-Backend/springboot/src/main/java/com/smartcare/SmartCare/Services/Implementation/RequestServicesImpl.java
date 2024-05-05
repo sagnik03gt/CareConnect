@@ -52,6 +52,8 @@ public class RequestServicesImpl implements RequestServices {
 
     private final String hashKeyForRequestSentNgo = "RequestSentNgo";
 
+    private final String hashKeyForNewReqSentNgo = "NewReqSentNgo";
+
     private Logger log = LoggerFactory.getLogger(RequestServicesImpl.class);
 
     //using user's longitude and latitude and redis geo search features, we can find out nearest ngo's
@@ -157,11 +159,13 @@ public class RequestServicesImpl implements RequestServices {
             redisHelpList.setCustomerId(custId);
             redisHelpList.setNgoId(ngoId);
             //saving the details with customer id into redis
-            redisTemplate.opsForHash().put(hashKeyForRequestSentNgo,custId,redisHelpList);
+            redisTemplate.opsForHash().put(hashKeyForNewReqSentNgo,ngoId,redisHelpList);
 
+
+            // below code is for previous logic
             //sending the request to ngo's owner and active agent using kafka
             //kafka -> prevent uninterrupted database failure.
-            kafkaTemplate.send(AppConstants.RequestTopicName,custId);
+            //kafkaTemplate.send(AppConstants.RequestTopicName,custId);
             return "Booked ";
         }
         throw new RuntimeException("there is no one available into this ngo..!!");
@@ -205,6 +209,15 @@ public class RequestServicesImpl implements RequestServices {
             return helpListRepo.findByngoId(id);
         }
         return helpListRepo.findRequestByUserId(id);
+    }
+
+    //after booking ngo from user side the user details has been store into redis
+    //then according to the ngo id, the newest request has benn fetched from this function
+    //and sent to all active ngo agent
+    @Override
+    public Object gettingReqFromRedisForNgo(String ngoId) {
+        Object newReqForNgo = redisTemplate.opsForHash().get(hashKeyForNewReqSentNgo,ngoId);
+        return newReqForNgo;
     }
 
 }
