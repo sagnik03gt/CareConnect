@@ -220,4 +220,10 @@ public class RequestServicesImpl implements RequestServices {
         return newReqForNgo;
     }
 
+    @Override
+    public String sentReqToActiveAgent(String custId) {
+        kafkaTemplate.send(AppConstants.RequestTopicName,custId);
+        return "sending request to active agent...... \n waiting for agent side to accept your request....";
+    }
+
 }

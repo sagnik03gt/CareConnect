@@ -48,4 +48,9 @@ public class RequestControllers {
     public ResponseEntity<Object> requestFromRedis(@PathVariable String ngoid){
         return new ResponseEntity<>(requestServices.gettingReqFromRedisForNgo(ngoid),HttpStatus.FOUND);
     }
+
+    @PostMapping("/sentReqToActiveAgent/{custId}")
+    public ResponseEntity<Object> sentReqToActiveAgent(@PathVariable String custId){
+        return new ResponseEntity<>(requestServices.sentReqToActiveAgent(custId),HttpStatus.OK);
+    }
 }
