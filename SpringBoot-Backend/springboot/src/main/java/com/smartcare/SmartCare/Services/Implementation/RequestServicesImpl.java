@@ -9,12 +9,15 @@ import com.smartcare.SmartCare.Repository.ActiveAgentRepo;
 import com.smartcare.SmartCare.Repository.HelpListRepo;
 import com.smartcare.SmartCare.Repository.OwnerRepo;
 import com.smartcare.SmartCare.Services.RequestServices;
+import lombok.Synchronized;
+import org.hibernate.annotations.Synchronize;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import redis.clients.jedis.GeoCoordinate;
 import redis.clients.jedis.UnifiedJedis;
 import redis.clients.jedis.args.GeoUnit;
@@ -52,9 +55,11 @@ public class RequestServicesImpl implements RequestServices {
 
     private final String hashKeyForRequestSentNgo = "RequestSentNgo";
 
-    private final String hashKeyForNewReqSentNgo = "NewReqSentNgo";
+//    private final String hashKeyForNewReqSentNgo = "NewReqSentNgo";
 
     private Logger log = LoggerFactory.getLogger(RequestServicesImpl.class);
+
+   private static final Queue<String> acceptedAgent = new LinkedList<>();
 
     //using user's longitude and latitude and redis geo search features, we can find out nearest ngo's
     //store the response as a list and sent to the front end part
@@ -159,14 +164,14 @@ public class RequestServicesImpl implements RequestServices {
             redisHelpList.setCustomerId(custId);
             redisHelpList.setNgoId(ngoId);
             //saving the details with customer id into redis
-            redisTemplate.opsForHash().put(hashKeyForNewReqSentNgo,ngoId,redisHelpList);
+            redisTemplate.opsForHash().put(hashKeyForRequestSentNgo,ngoId,redisHelpList);
 
 
             // below code is for previous logic
             //sending the request to ngo's owner and active agent using kafka
             //kafka -> prevent uninterrupted database failure.
             //kafkaTemplate.send(AppConstants.RequestTopicName,custId);
-            return "Booked ";
+            return "storing details into redis \n lets for the ngo response ";
         }
         throw new RuntimeException("there is no one available into this ngo..!!");
     }
@@ -186,6 +191,8 @@ public class RequestServicesImpl implements RequestServices {
         //saving into redis
         redisTemplate.opsForHash().put(hashKeyForRequestSentNgo, id, list);
 
+        list = (RedisHelpList) redisTemplate.opsForHash().get(hashKeyForRequestSentNgo, id);
+
 
         //prepare user request to save into mysql database
         HelpList helpList = new HelpList();
@@ -193,7 +200,8 @@ public class RequestServicesImpl implements RequestServices {
         helpList.setLongitude(list.getLongitude());
         helpList.setLatitude(list.getLatitude());
         helpList.setStatus(list.getStatus());
-        helpList.setSolvedTime(list.getSolvedTime());helpList.setNgoId(list.getNgoId());
+        helpList.setSolvedTime(list.getSolvedTime());
+        helpList.setNgoId(list.getNgoId());
         Customer customer = new Customer();
         customer.setUserId(list.getCustomerId());
         helpList.setCustomer(customer);
@@ -216,14 +224,29 @@ public class RequestServicesImpl implements RequestServices {
     //and sent to all active ngo agent
     @Override
     public Object gettingReqFromRedisForNgo(String ngoId) {
-        Object newReqForNgo = redisTemplate.opsForHash().get(hashKeyForNewReqSentNgo,ngoId);
+        Object newReqForNgo = redisTemplate.opsForHash().get(hashKeyForRequestSentNgo,ngoId);
         return newReqForNgo;
     }
 
     @Override
     public String sentReqToActiveAgent(String custId) {
+        acceptedAgent.clear();
         kafkaTemplate.send(AppConstants.RequestTopicName,custId);
         return "sending request to active agent...... \n waiting for agent side to accept your request....";
+    }
+
+    @Override
+    @Transactional
+    public synchronized  String acceptReq(String agentId) {
+        if(acceptedAgent.isEmpty()){
+            acceptedAgent.add(agentId);
+            return "request has been accepted by " + agentId;
+        }
+        else{
+            return "another agent has accepted the request";
+        }
+
+
     }
 
 }

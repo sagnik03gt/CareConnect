@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/SmartCare/request")
@@ -52,5 +51,9 @@ public class RequestControllers {
     @PostMapping("/sentReqToActiveAgent/{custId}")
     public ResponseEntity<Object> sentReqToActiveAgent(@PathVariable String custId){
         return new ResponseEntity<>(requestServices.sentReqToActiveAgent(custId),HttpStatus.OK);
+    }
+    @PostMapping("/accept/{agentId}")
+    public ResponseEntity<Object> acceptRequest(@PathVariable String agentId){
+        return new ResponseEntity<>(requestServices.acceptReq(agentId),HttpStatus.OK);
     }
 }
