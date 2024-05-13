@@ -1,16 +1,16 @@
 version: '3'
 services:
-#  mysql:
-#    image: mysql:latest
-#    restart : always
-#    ports:
-#      - "3307:3306"
-#    environment:
-#      MYSQL_ROOT_PASSWORD: sayan
-#      MYSQL_DATABASE : smartcare
-#      MYSQL_HOST: 3306
-#    volumes:
-#      - mysql-vol:/var/lib/mysql
+  mysql:
+    image: mysql:latest
+    restart : always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: sayan
+      MYSQL_DATABASE : smartcare
+      MYSQL_HOST: 3306
+    volumes:
+      - mysql-vol:/var/lib/mysql
 
   redis:
     restart : always
