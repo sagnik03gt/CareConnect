@@ -1,5 +1,6 @@
 package com.smartcare.SmartCare.Controllers;
 
+import com.smartcare.SmartCare.DTO.CustLogin;
 import com.smartcare.SmartCare.DTO.CustomerDTO;
 import com.smartcare.SmartCare.DTO.CustomerDTOUpdate;
 import com.smartcare.SmartCare.Response.MappingResponse;
@@ -32,6 +33,20 @@ public class CustomerControllers {
             response.add("null");
             e.printStackTrace();
             return new ResponseEntity<>(MappingResponse.mapUniversalResponse("Error while onboarding new customer",response), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @PostMapping("/login")
+    public ResponseEntity<Object> custLogin(@RequestBody CustLogin custLogin){
+        try{
+            response.clear();
+            response.add(customerServices.login(custLogin.getUserEmail(),custLogin.getPassword()));
+            return new ResponseEntity<>(MappingResponse.mapUniversalResponse("Okay",response), HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            response.clear();
+            response.add("null");
+            e.printStackTrace();
+            return new ResponseEntity<>(MappingResponse.mapUniversalResponse("username and password not matched",response), HttpStatus.BAD_REQUEST);
         }
     }
     @GetMapping("/{id}")

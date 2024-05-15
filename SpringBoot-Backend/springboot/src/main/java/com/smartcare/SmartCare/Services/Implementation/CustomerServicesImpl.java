@@ -27,6 +27,9 @@ public class CustomerServicesImpl implements CustomerServices {
     private Logger log = LoggerFactory.getLogger(CustomerServicesImpl.class);
     @Override
     public Object saveCust(CustomerDTO customerDTO) {
+        if(customerRepo.existsByemail(customerDTO.getEmail())){
+            return "Email Already Exists";
+        }
         log.info("saving new customer");
         Customer savedCustomer = customerRepo.save(CustomerHelper.convertIntoCustomer(customerDTO, new Customer()));
         log.info("saved to mysql");
@@ -78,5 +81,16 @@ public class CustomerServicesImpl implements CustomerServices {
     @Override
     public String checkEmail(String email) {
         return customerRepo.existsByemail(email) ? "Email Not Available " :"Email Available " ;
+    }
+
+    @Override
+    public String login(String email, String password) {
+        if(customerRepo.existsByemail(email)){
+            String DbPassword = customerRepo.findpassword(email);
+            if(DbPassword.equals(password)){
+                return "Successfully logged in";
+            }
+        }
+        return "Wrong email or password";
     }
 }
