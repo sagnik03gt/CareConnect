@@ -19,6 +19,7 @@ services:
       - "7778:6379"
 
   zookeeper:
+    restart : always
     image: 'bitnami/zookeeper:latest'
     container_name: zookeeper
     ports:
@@ -26,6 +27,7 @@ services:
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
+    restart : always
     image: 'bitnami/kafka:latest'
     container_name: kakfa
     ports:
