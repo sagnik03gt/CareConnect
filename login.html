@@ -1,135 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
-    <link rel="stylesheet" href="./login.css">
-</head>
+    <link rel="stylesheet" href="./login.css" />
+  </head>
 
-<body>
+  <body>
     <div id="container" class="container">
-        <!-- FORM SECTION -->
-        <div class="row">
-            <!-- SIGN UP -->
-            <div class="col align-items-center flex-col sign-up">
-                <div class="form-wrapper align-items-center">
-                    <div class="form sign-up">
-                        <div class="input-group">
-                            <i class='bx bxs-user'></i>
-                            <input type="text" placeholder="Username" required>
-                        </div>
-                        <div class="input-group">
-                            <i class='bx bx-mail-send'></i>
-                            <input type="email" placeholder="Email" required>
-                        </div>
-                        <div class="input-group">
-                            <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Password" required>
-                        </div>
-                        <div class="input-group">
+      <!-- FORM SECTION -->
+      <div class="row">
+        <!-- SIGN UP -->
+        <div class="col align-items-center flex-col sign-up">
+          <div class="form-wrapper align-items-center">
+            <div class="form sign-up">
+              <form id="signup_form">
+                <div class="input-group">
+                  <i class="bx bxs-user"></i>
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <i class="bx bxs-user"></i>
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="address"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <i class="bx bxs-user"></i>
+                  <input type="date" name="dob" required />
+                </div>
+                <div class="input-group">
+                  <i class="bx bxs-user"></i>
+                  <input
+                    type="text"
+                    name="contact"
+                    placeholder="Phone_no."
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <i class="bx bx-mail-send"></i>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <i class="bx bxs-lock-alt"></i>
+                  <input type="password" placeholder="Password" required />
+                </div>
+                <!-- <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
                             <input type="password" placeholder="Confirm password" required>
-                        </div>
-                        <button>
-                            Sign up
-                        </button>
-                        <p>
-                            <span>
-                                Already have an account?
-                            </span>
-                            <b onclick="toggle()" class="pointer">
-                                Sign in here
-                            </b>
-                        </p>
-                    </div>
-                </div>
-
+                        </div> -->
+                <button type="submit">Sign up</button>
+              </form>
+              <p>
+                <span> Already have an account? </span>
+                <b onclick="toggle()" class="pointer"> Sign in here </b>
+              </p>
             </div>
-            <!-- END SIGN UP -->
-            <!-- SIGN IN -->
-            <div class="col align-items-center flex-col sign-in">
-                <div class="form-wrapper align-items-center">
-                    <div class="form sign-in">
-                        <div class="input-group">
-                            <i class='bx bxs-user'></i>
-                            <input type="text" placeholder="Username" required>
-                        </div>
-                        <div class="input-group">
-                            <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Password" required>
-                        </div>
-                        <button>
-                            Sign in
-                        </button>
-                        <p>
-                            <b>
-                                Forgot password?
-                            </b>
-                        </p>
-                        <p>
-                            <span>
-                                Don't have an account?
-                            </span>
-                            <b onclick="toggle()" class="pointer">
-                                Sign up here
-                            </b>
-                        </p>
-                        <span id="ngo-login">
-                            <a href="./ngo_login.html">Related to NGO'S ?</a>
-                        </span>
-                    </div>
-                </div>
-                <div class="form-wrapper">
-
-                </div>
-            </div>
-            <!-- END SIGN IN -->
+          </div>
         </div>
-        <!-- END FORM SECTION -->
-        <!-- CONTENT SECTION -->
-        <div class="row content-row">
-            <!-- SIGN IN CONTENT -->
-            <div class="col align-items-center flex-col">
-                <div class="text sign-in">
-                    <h2>
-                        Welcome
-                    </h2>
-
-                </div>
-                <div class="img sign-in">
-
-                </div>
+        <!-- END SIGN UP -->
+        <!-- SIGN IN -->
+        <div class="col align-items-center flex-col sign-in">
+          <div class="form-wrapper align-items-center">
+            <div class="form sign-in">
+              <div class="input-group">
+                <i class="bx bxs-user"></i>
+                <input type="text" placeholder="Username" required />
+              </div>
+              <div class="input-group">
+                <i class="bx bxs-lock-alt"></i>
+                <input type="password" placeholder="Password" required />
+              </div>
+              <button>Sign in</button>
+              <p>
+                <b> Forgot password? </b>
+              </p>
+              <p>
+                <span> Don't have an account? </span>
+                <b onclick="toggle()" class="pointer"> Sign up here </b>
+              </p>
+              <span id="ngo-login">
+                <a href="./ngo_login.html">Related to NGO'S ?</a>
+              </span>
             </div>
-            <!-- END SIGN IN CONTENT -->
-            <!-- SIGN UP CONTENT -->
-            <div class="col align-items-center flex-col">
-                <div class="img sign-up">
-
-                </div>
-                <div class="text sign-up">
-                    <h2>
-                        Join with us
-                    </h2>
-
-                </div>
-            </div>
-            <!-- END SIGN UP CONTENT -->
+          </div>
+          <div class="form-wrapper"></div>
         </div>
-        <!-- END CONTENT SECTION -->
+        <!-- END SIGN IN -->
+      </div>
+      <!-- END FORM SECTION -->
+      <!-- CONTENT SECTION -->
+      <div class="row content-row">
+        <!-- SIGN IN CONTENT -->
+        <div class="col align-items-center flex-col">
+          <div class="text sign-in">
+            <h2>Welcome</h2>
+          </div>
+          <div class="img sign-in"></div>
+        </div>
+        <!-- END SIGN IN CONTENT -->
+        <!-- SIGN UP CONTENT -->
+        <div class="col align-items-center flex-col">
+          <div class="img sign-up"></div>
+          <div class="text sign-up">
+            <h2>Join with us</h2>
+          </div>
+        </div>
+        <!-- END SIGN UP CONTENT -->
+      </div>
+      <!-- END CONTENT SECTION -->
     </div>
-</body>
-<script>
-    let container = document.getElementById('container')
+  </body>
+  <script>
+    let container = document.getElementById("container");
 
-toggle = () => {
-	container.classList.toggle('sign-in')
-	container.classList.toggle('sign-up')
-}
+    toggle = () => {
+      container.classList.toggle("sign-in");
+      container.classList.toggle("sign-up");
+    };
 
-setTimeout(() => {
-	container.classList.add('sign-in')
-}, 200)
-</script>
+    setTimeout(() => {
+      container.classList.add("sign-in");
+    }, 200);
+
+    const form = document.getElementById("signup_form");
+    form.addEventListener("submit", postUserData);
+
+    async function postUserData(event) {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      try {
+        const response = await fetch(
+          "http://localhost:6999/SmartCare/Customer/save",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+        const responseData = await response.json();
+        console.log(responseData);
+        // Optionally, display a success message or redirect the user
+      } catch (error) {
+        console.error("Error:", error);
+        // Handle errors, display an error message, etc.
+      }
+    }
+
+    //return response.json();
+  </script>
 </html>
