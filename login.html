@@ -85,13 +85,14 @@
             <div class="form sign-in">
               <div class="input-group">
                 <i class="bx bxs-user"></i>
-                <input type="text" placeholder="Username" required />
+                <input type="email" placeholder="email" name="userEmail" required  />
               </div>
               <div class="input-group">
                 <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Password" required />
+                <input type="password" placeholder="Password" name="password" required />
               </div>
-              <button>Sign in</button>
+              <button onclick="login()">Sign in</button>
+              <span id="error-msg"></span>
               <p>
                 <b> Forgot password? </b>
               </p>
@@ -142,7 +143,7 @@
     setTimeout(() => {
       container.classList.add("sign-in");
     }, 200);
-
+//##################### SIGN UP FUNCTION ##########################
     const form = document.getElementById("signup_form");
     form.addEventListener("submit", postUserData);
 
@@ -170,7 +171,35 @@
         // Handle errors, display an error message, etc.
       }
     }
-
+    
     //return response.json();
-  </script>
+
+    //######################### LOGIN FUNCTION #########################
+      async function login(userEmail,password){
+         const data = {userEmail,password}
+         try{
+          const response = fetch("http://localhost:6999/SmartCare/Customer/login",{
+            method : "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          const result = await response.json();
+          if(result){
+            console.log(result);
+            return result;
+          }else{
+            console.error(result.message)
+            document.getElementById("error-msg").textContent = 'Invalid email or password';
+            return null;
+          }
+
+        }catch(error){
+         console.error("Error:",error);
+         document.getElementById("error-msg").textContent = "Failed to login";
+        }
+
+      }
+
+
+    </script>
 </html>
