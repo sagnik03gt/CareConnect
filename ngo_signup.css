@@ -12,9 +12,9 @@ body {
   align-items: center;
   padding: 10px;
   background: linear-gradient(
-    90deg,
-    rgba(63, 251, 217, 1) 0%,
-    rgba(147, 241, 58, 1) 100%
+    45deg,
+    rgb(171, 225, 245) 0%,
+    /* rgba(17, 105, 156, 0.9725140056022409) 44%, */ rgb(0, 153, 255) 100%
   );
 
   background-size: 300% 300%;
@@ -37,7 +37,7 @@ body {
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 15px;
-  box-shadow: 8px 8px 20px rgb(4, 92, 1);
+  box-shadow: 8px 8px 20px rgb(5, 56, 138);
 }
 .container .title {
   font-size: 25px;
@@ -132,17 +132,13 @@ form .button input {
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(
-    90deg,
-    rgba(63, 251, 217, 1) 0%,
-    rgba(147, 241, 58, 1) 100%
-  );
+  background: linear-gradient(90deg, rgb(50, 161, 235), rgb(64, 215, 232));
 }
 .button {
   text-align: center;
 }
 .button a:hover {
-  color: blue;
+  color: rgb(6, 76, 145);
 }
 .button a {
   text-align: center;
@@ -154,11 +150,7 @@ form .button input {
 form .button input:hover {
   /* transform: scale(0.99); */
   color: rgb(6, 6, 71);
-  background: linear-gradient(
-    90deg,
-    rgba(147, 241, 58, 1) 0%,
-    rgba(63, 251, 217, 1) 100%
-  );
+  background: linear-gradient(90deg, rgb(64, 215, 232), rgb(50, 161, 235));
 }
 @media (max-width: 584px) {
   .container {
