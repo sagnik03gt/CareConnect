@@ -9,6 +9,6 @@ import redis.clients.jedis.UnifiedJedis;
 public class JedisConfig {
     @Bean
     public UnifiedJedis jedis(){
-        return new UnifiedJedis("redis://localhost:7778");
+        return new UnifiedJedis("redis://redis:7778");
     }
 }
