@@ -20,31 +20,81 @@
       </div> -->
       <div class="title">Ngo's Owner, Please register Yourself</div>
       <div class="content">
-        <form action="#">
+        <form action="#" id="signup_form">
           <div class="user-details">
             <div class="input-box">
               <span class="details">Full Name</span>
-              <input type="text" placeholder="Enter your name" required />
+              <input
+                type="text"
+                id="fullname"
+                name="name"
+                placeholder="Enter your name"
+                required
+              />
             </div>
             <div class="input-box">
               <span class="details">Address</span>
-              <input type="text" placeholder="Enter your address" required />
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Enter your address"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">date of Birth</span>
+              <input type="date" id="dob" name="dob" required />
             </div>
             <div class="input-box">
               <span class="details">Email</span>
-              <input type="text" placeholder="Enter your email" required />
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
             </div>
             <div class="input-box">
               <span class="details">Phone Number</span>
-              <input type="text" placeholder="Enter your number" required />
+              <input
+                type="number"
+                id="phone"
+                name="phoneNumber"
+                placeholder="Enter your number"
+                required
+              />
             </div>
             <div class="input-box">
               <span class="details">Ngo Id</span>
-              <input type="text" placeholder="Enter your Ngo id" required />
+              <input
+                type="text"
+                id="ngoid"
+                name="ngoId"
+                placeholder="Enter your Ngo id"
+                required
+              />
             </div>
             <div class="input-box">
               <span class="details">Ngo Address</span>
-              <input type="text" placeholder="Enter Ngo Address" required />
+              <input
+                type="text"
+                id="ngo_add"
+                name="ngoAddress"
+                placeholder="Enter Ngo Address"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input
+                type="password"
+                id="ngo_password"
+                name="password"
+                placeholder="Enter password"
+                required
+              />
             </div>
           </div>
 
@@ -55,5 +105,126 @@
         </form>
       </div>
     </div>
+    <script>
+      const form = document.getElementById("signup_form");
+      form.addEventListener("submit", postOwnerData);
+
+      async function postOwnerData(event) {
+        event.preventDefault();
+
+        var fullname = document.getElementById("fullname").value;
+        var address = document.getElementById("address").value;
+        var dob = document.getElementById("dob").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var ngoid = document.getElementById("ngoid").value;
+        var ngoadd = document.getElementById("ngo_add").value;
+        var password = document.getElementById("ngo_password").value;
+        //var ngoid = document.getElementById("ngoid").value;
+
+        // Simple validation for each field
+        if (fullname == "") {
+          alert("Please enter your fullname.");
+        }
+        if (address == "") {
+          alert("Please enter your address.");
+        }
+        if (email == "") {
+          alert("Please enter your email.");
+        }
+        // Basic email format validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address.");
+        }
+        if (phone == "") {
+          alert("Please enter your phone number.");
+        }
+        // Basic phone number format validation
+        var phoneRegex = /^\d{10}$/;
+        if (!phoneRegex.test(phone)) {
+          alert("Please enter a valid 10-digit phone number.");
+        }
+        if (ngoid == "") {
+          alert("Please enter your password.");
+        }
+        if (ngoadd == "") {
+          alert("Please enter ngo address");
+        }
+        if (password.length < 6) {
+          alert("Password must be at least 6 characters long.");
+        }
+        if (!datePattern.test(dob)) {
+          return "Invalid date format. Please use YYYY-MM-DD.";
+        }
+
+        // Parse the date parts
+        const [year, month, day] = dob.split("-").map(Number);
+        const dobDate = new Date(year, month - 1, day);
+
+        // Check if the date is valid
+        if (
+          dobDate.getFullYear() !== year ||
+          dobDate.getMonth() !== month - 1 ||
+          dobDate.getDate() !== day
+        ) {
+          return "Invalid date. Please enter a real date.";
+        }
+
+        // Check if the date is not in the future
+        const today = new Date();
+        if (dobDate > today) {
+          return "Date of birth cannot be in the future.";
+        }
+
+        // (Optional) Check if the age is within a specific range
+        const minAge = 18;
+        const maxAge = 100;
+        const age = today.getFullYear() - dobDate.getFullYear();
+        const ageMonth = today.getMonth() - dobDate.getMonth();
+        const ageDay = today.getDate() - dobDate.getDate();
+
+        if (
+          age < minAge ||
+          (age === minAge && ageMonth < 0) ||
+          (age === minAge && ageMonth === 0 && ageDay < 0)
+        ) {
+          return `Age must be at least ${minAge} years.`;
+        }
+        if (
+          age > maxAge ||
+          (age === maxAge && ageMonth > 0) ||
+          (age === maxAge && ageMonth === 0 && ageDay > 0)
+        ) {
+          return `Age must be less than ${maxAge} years.`;
+        }
+        // All validations passed
+
+        //location
+        const location = navigator.geolocation(() => {});
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        try {
+          const response = await fetch(
+            "http://localhost:6999/SmartCare/Owner/save",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            }
+          );
+          const responseData = await response.json();
+          console.log(responseData);
+          // Optionally, display a success message or redirect the user
+        } catch (error) {
+          console.error("Error:", error);
+          // Handle errors, display an error message, etc.
+        }
+      }
+    </script>
   </body>
 </html>

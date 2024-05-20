@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <link rel="stylesheet" href="./login.css" />
+    <script>
+      //signup form validation
+    </script>
   </head>
 
   <body>
@@ -19,6 +22,7 @@
                 <div class="input-group">
                   <i class="bx bxs-user"></i>
                   <input
+                    id="username"
                     type="text"
                     name="username"
                     placeholder="Username"
@@ -28,6 +32,7 @@
                 <div class="input-group">
                   <i class="bx bxs-user"></i>
                   <input
+                    id="address"
                     type="text"
                     name="address"
                     placeholder="address"
@@ -36,7 +41,7 @@
                 </div>
                 <div class="input-group">
                   <i class="bx bxs-user"></i>
-                  <input type="date" name="dob" required />
+                  <input id="phone" type="date" name="dob" required />
                 </div>
                 <div class="input-group">
                   <i class="bx bxs-user"></i>
@@ -50,6 +55,7 @@
                 <div class="input-group">
                   <i class="bx bx-mail-send"></i>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     placeholder="Email"
@@ -59,6 +65,7 @@
                 <div class="input-group">
                   <i class="bx bxs-lock-alt"></i>
                   <input
+                    id="password"
                     type="password"
                     name="password"
                     placeholder="Password"
@@ -69,7 +76,7 @@
                             <i class='bx bxs-lock-alt'></i>
                             <input type="password" placeholder="Confirm password" required>
                         </div> -->
-                <button type="submit">Sign up</button>
+                <button type="submit" id="sign_up">Sign up</button>
               </form>
               <p>
                 <span> Already have an account? </span>
@@ -83,15 +90,26 @@
         <div class="col align-items-center flex-col sign-in">
           <div class="form-wrapper align-items-center">
             <div class="form sign-in">
-              <div class="input-group">
-                <i class="bx bxs-user"></i>
-                <input type="email" placeholder="email" name="userEmail" required  />
-              </div>
-              <div class="input-group">
-                <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Password" name="password" required />
-              </div>
-              <button onclick="login()">Sign in</button>
+              <form  id="login-form">
+                <div class="input-group">
+                  <i class="bx bxs-user"></i>
+                  <input
+                   id="userEmail"
+                   type="email" 
+                   placeholder="email" 
+                   name="userEmail" required  />
+                </div>
+                <div class="input-group">
+                  <i class="bx bxs-lock-alt"></i>
+                  <input 
+                  id="password" 
+                  type="password" 
+                  placeholder="Password" 
+                  name="password" required />
+                </div>
+                <button type="submit">Sign in</button>
+              </form>
+             
               <span id="error-msg"></span>
               <p>
                 <b> Forgot password? </b>
@@ -115,7 +133,7 @@
         <!-- SIGN IN CONTENT -->
         <div class="col align-items-center flex-col">
           <div class="text sign-in">
-            <h2>Welcome</h2>
+            <h2>Welcome To Careconnect</h2>
           </div>
           <div class="img sign-in"></div>
         </div>
@@ -125,6 +143,7 @@
           <div class="img sign-up"></div>
           <div class="text sign-up">
             <h2>Join with us</h2>
+            <h2>Let's Sign up</h2>
           </div>
         </div>
         <!-- END SIGN UP CONTENT -->
@@ -148,6 +167,45 @@
     form.addEventListener("submit", postUserData);
 
     async function postUserData(event) {
+      var username = document.getElementById("username").value;
+      var address = document.getElementById("address").value;
+      var email = document.getElementById("email").value;
+      var phone = document.getElementById("phone").value;
+      var password = document.getElementById("password").value;
+
+      // Simple validation for each field
+      if (username == "") {
+        alert("Please enter your username.");
+      }
+      if (address == "") {
+        alert("Please enter your address.");
+      }
+      if (email == "") {
+        alert("Please enter your email.");
+      }
+      // Basic email format validation
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+      }
+      if (phone == "") {
+        alert("Please enter your phone number.");
+      }
+      // Basic phone number format validation
+      var phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+      }
+      if (password == "") {
+        alert("Please enter your password.");
+      }
+      // Password length validation
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+      }
+      // All validations passed
+      //alert("Form submitted successfully!");
+
       event.preventDefault();
       const formData = new FormData(form);
       const data = Object.fromEntries(formData);
@@ -171,35 +229,40 @@
         // Handle errors, display an error message, etc.
       }
     }
-    
-    //return response.json();
+  
+  
+  //return response.json();
 
-    //######################### LOGIN FUNCTION #########################
-      async function login(userEmail,password){
-         const data = {userEmail,password}
-         try{
-          const response = fetch("http://localhost:6999/SmartCare/Customer/login",{
-            method : "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          const result = await response.json();
-          if(result){
-            console.log(result);
-            return result;
-          }else{
-            console.error(result.message)
-            document.getElementById("error-msg").textContent = 'Invalid email or password';
-            return null;
-          }
+//################################ Login ###############################
+   document.getElementById('login-form').addEventListener('submit',login);
+   async function login(event){
+     var email = document.getElementById('userEmail').value;
+     var password = document.getElementById('password').value;
+     event.preventDefault();
+    const data = {email,password};
+    console.log(data);
+    try {
+      const response = await fetch("http://localhost:6999/SmartCare/Customer/login",{
+           method:"POST",
+           headers:{
+            "Content-Type":"application/json",
+           },
+           body:JSON.stringify(data),
+      });
+      console.log(response);
+      const result = await response.json();
+      console.log(result);
+      // if(response.ok){
+      //   window.location.href="/user_main.html"
+      // }else{
+      //   document.getElementById('error-msg').textContent = 'Something went wrong.'
+      // }
+      
+    } catch (error) {
+      console.error("Error :",error);
+      document.getElementById('error-msg').textContent = 'Failed to Login.'
+    }
+   }
 
-        }catch(error){
-         console.error("Error:",error);
-         document.getElementById("error-msg").textContent = "Failed to login";
-        }
-
-      }
-
-
-    </script>
+  </script>
 </html>
