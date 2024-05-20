@@ -84,14 +84,8 @@ public class CustomerServicesImpl implements CustomerServices {
     }
 
     @Override
-    public String login(String email, String password) {
-        if(customerRepo.existsByemail(email)){
-            String DbPassword = customerRepo.findpassword(email);
-            if(DbPassword.equals(password)){
-                return "Successfully logged in";
-
-            }
-        }
-        return "Wrong email or password";
+    public Boolean login(String email, String password) {
+        Customer customer = customerRepo.findByemail(email);
+        return customer != null && customer.getPassword().equals(password);
     }
 }
