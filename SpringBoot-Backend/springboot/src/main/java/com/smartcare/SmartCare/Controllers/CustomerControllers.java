@@ -6,6 +6,7 @@ import com.smartcare.SmartCare.DTO.CustomerDTOUpdate;
 import com.smartcare.SmartCare.Response.MappingResponse;
 import com.smartcare.SmartCare.Services.Implementation.CustomerServicesImpl;
 import jakarta.annotation.security.PermitAll;
+import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,17 +38,11 @@ public class CustomerControllers {
     }
     @PostMapping("/login")
     public ResponseEntity<Object> custLogin(@RequestBody CustLogin custLogin){
-        try{
-            response.clear();
-            response.add(customerServices.login(custLogin.getUserEmail(),custLogin.getPassword()));
-            return new ResponseEntity<>(MappingResponse.mapUniversalResponse("Okay",response), HttpStatus.CREATED);
+        Boolean login = customerServices.login(custLogin.getUserEmail(),custLogin.getPassword());
+        if(login){
+            return ResponseEntity.ok().body("{\"success\" : true}");
         }
-        catch (Exception e){
-            response.clear();
-            response.add("null");
-            e.printStackTrace();
-            return new ResponseEntity<>(MappingResponse.mapUniversalResponse("username and password not matched",response), HttpStatus.BAD_REQUEST);
-        }
+        return ResponseEntity.ok().body("{\"success\" : false}");
     }
     @GetMapping("/{id}")
     public ResponseEntity<Object> viewCust(@PathVariable String id){
