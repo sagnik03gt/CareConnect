@@ -33,9 +33,17 @@
             facing various challenges can connect with our network of dedicated
             volunteers and resources
           </p>
-          <a href="/login.html">Lets get into it</a>
+          <button onclick="getAuth()">Explore</button>
         </div>
       </div>
     </section>
   </body>
+  <script>
+    function getAuth(){
+      const auth = localStorage.getItem('User');
+      if(auth){
+        window.location.href= "/user_main.html";
+      }
+    }
+  </script>
 </html>
