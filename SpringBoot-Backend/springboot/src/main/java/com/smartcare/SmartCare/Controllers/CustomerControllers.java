@@ -38,7 +38,7 @@ public class CustomerControllers {
     }
     @PostMapping("/login")
     public ResponseEntity<Object> custLogin(@RequestBody CustLogin custLogin){
-        Boolean login = customerServices.login(custLogin.getUserEmail(),custLogin.getPassword());
+        Boolean login = customerServices.login(custLogin.getUserEmail(),custLogin.getUserPassword());
         if(login){
             return ResponseEntity.ok().body("{\"success\" : true}");
         }
