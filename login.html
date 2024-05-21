@@ -238,12 +238,18 @@
   //return response.json();
 
 //################################ Login ###############################
-   document.getElementById('login-form').addEventListener('submit',login);
+     const loginForm = document.getElementById('login-form');
+     loginForm.addEventListener('submit',login);
    async function login(event){
+
      var email = document.getElementById('userEmail').value;
      var password = document.getElementById('userPassword').value;
+     var message = document.getElementById('error-msg');
+
      event.preventDefault();
-    const data = {email,password};
+     const formData = new FormData(loginForm);
+      const data = Object.fromEntries(formData);
+
     console.log(data);
     try {
       const res = await fetch("http://localhost:6999/SmartCare/Customer/login",{
@@ -259,17 +265,20 @@
 
      console.log(result);
 
-     if(result.success){
-          window.location.href="/user_main.html"
-       }else{
-         document.getElementById('error-msg').textContent = "* Invalid Email or Password";
-       }
+     if (result.success) { 
+      localStorage.setItem('User',email);
+      window.location.replace('/user_main.html'); 
+    } else {
+      
+      console.error("API call successful but data.success is false");
+      message.textContent= "* Invalid Email or Password."
+
+    }
       
     } catch (error) {
       console.error("Error :",error);
       document.getElementById('error-msg').textContent = 'Failed to Login.'
     }
    }
-
   </script>
 </html>
