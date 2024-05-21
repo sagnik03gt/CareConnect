@@ -37,6 +37,7 @@ public class CustomerControllers {
         }
     }
     @PostMapping("/login")
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     public ResponseEntity<Object> custLogin(@RequestBody CustLogin custLogin){
         Boolean login = customerServices.login(custLogin.getUserEmail(),custLogin.getUserPassword());
         if(login){
