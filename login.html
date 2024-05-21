@@ -102,10 +102,10 @@
                 <div class="input-group">
                   <i class="bx bxs-lock-alt"></i>
                   <input 
-                  id="password" 
+                  id="userPassword" 
                   type="password" 
                   placeholder="Password" 
-                  name="password" required />
+                  name="userPassword" required />
                 </div>
                 <button type="submit">Sign in</button>
               </form>
@@ -223,6 +223,10 @@
         );
         const responseData = await response.json();
         console.log(responseData);
+        if(responseData){
+          window.location.href="/user_main.html"
+          localStorage.setItem('User',email);
+        }
         // Optionally, display a success message or redirect the user
       } catch (error) {
         console.error("Error:", error);
@@ -237,26 +241,29 @@
    document.getElementById('login-form').addEventListener('submit',login);
    async function login(event){
      var email = document.getElementById('userEmail').value;
-     var password = document.getElementById('password').value;
+     var password = document.getElementById('userPassword').value;
      event.preventDefault();
     const data = {email,password};
     console.log(data);
     try {
-      const response = await fetch("http://localhost:6999/SmartCare/Customer/login",{
+      const res = await fetch("http://localhost:6999/SmartCare/Customer/login",{
            method:"POST",
            headers:{
-            "Content-Type":"application/json",
+            'Content-Type':'application/json',
            },
            body:JSON.stringify(data),
       });
-      console.log(response);
-      const result = await response.json();
-      console.log(result);
-      // if(response.ok){
-      //   window.location.href="/user_main.html"
-      // }else{
-      //   document.getElementById('error-msg').textContent = 'Something went wrong.'
-      // }
+      const result = await res.json();
+
+     console.log(res.status);
+
+     console.log(result);
+
+     if(result.success){
+          window.location.href="/user_main.html"
+       }else{
+         document.getElementById('error-msg').textContent = "* Invalid Email or Password";
+       }
       
     } catch (error) {
       console.error("Error :",error);
