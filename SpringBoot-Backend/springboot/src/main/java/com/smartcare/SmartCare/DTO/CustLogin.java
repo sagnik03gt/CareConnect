@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CustLogin {
     private String userEmail;
-    private String password;
+    private String userPassword;
 }
