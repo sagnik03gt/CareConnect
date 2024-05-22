@@ -356,3 +356,8 @@ body {
   font-family: sans-serif;
   font-weight: bold;
 }
+#error-msg{
+  color: red;
+  font-size: 0.8rem;
+  font-weight: bold;
+}

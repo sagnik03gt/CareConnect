@@ -37,17 +37,22 @@ public class CustomerControllers {
     }
     @PostMapping("/login")
     public ResponseEntity<Object> custLogin(@RequestBody CustLogin custLogin){
-        try{
-            response.clear();
-            response.add(customerServices.login(custLogin.getUserEmail(),custLogin.getPassword()));
-            return new ResponseEntity<>(MappingResponse.mapUniversalResponse("Okay",response), HttpStatus.CREATED);
+        if (customerServices.login(custLogin.getUserEmail(),custLogin.getPassword())) {
+            return new ResponseEntity<>(true,HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
         }
-        catch (Exception e){
-            response.clear();
-            response.add("null");
-            e.printStackTrace();
-            return new ResponseEntity<>(MappingResponse.mapUniversalResponse("username and password not matched",response), HttpStatus.BAD_REQUEST);
-        }
+        // try{
+        //     response.clear();
+        //     response.add(customerServices.login(custLogin.getUserEmail(),custLogin.getPassword()));
+        //     return new ResponseEntity<>(MappingResponse.mapUniversalResponse("Okay",response), HttpStatus.CREATED);
+        // }
+        // catch (Exception e){
+        //     response.clear();
+        //     response.add("null");
+        //     e.printStackTrace();
+        //     return new ResponseEntity<>(MappingResponse.mapUniversalResponse("username and password not matched",response), HttpStatus.BAD_REQUEST);
+        // }
     }
     @GetMapping("/{id}")
     public ResponseEntity<Object> viewCust(@PathVariable String id){
