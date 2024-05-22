@@ -20,7 +20,7 @@
           <h2>CareConnect</h2>
         </a>
       </header>
-      <video src="./images/intro_CC.mp4" muted autoplay loop></video>
+      <video src="./images/intro_CC2.mp4" muted autoplay loop></video>
 
       <div class="row">
         <div class="text">
@@ -39,12 +39,12 @@
     </section>
   </body>
   <script>
-    function getAuth(){
-      const auth = localStorage.getItem('User');
-      if(auth){
-        window.location.href= "/user_main.html";
-      }else{
-        window.location.href="/login.html";
+    function getAuth() {
+      const auth = localStorage.getItem("User");
+      if (auth) {
+        window.location.href = "/user_main.html";
+      } else {
+        window.location.href = "/login.html";
       }
     }
   </script>
