@@ -37,19 +37,18 @@ public class CustomerControllers {
         }
     }
     @PostMapping("/login")
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
-    public ResponseEntity<Object> custLogin(@RequestBody CustLogin custLogin){
-        try{
+    public ResponseEntity<Object> custLogin(@RequestBody CustLogin custLogin) {
+        try {
             response.clear();
-            response.add(customerServices.login(custLogin.getUserEmail(),custLogin.getUserPassword()));
-            return new ResponseEntity<>(MappingResponse.mapUniversalResponse("Okay",response), HttpStatus.CREATED);
-        }
-        catch (Exception e) {
+            response.add(customerServices.login(custLogin.getUserEmail(), custLogin.getUserPassword()));
+            return new ResponseEntity<>(MappingResponse.mapUniversalResponse("Okay", response), HttpStatus.CREATED);
+        } catch (Exception e) {
             response.clear();
             response.add("null");
             e.printStackTrace();
             return new ResponseEntity<>(MappingResponse.mapUniversalResponse("username and password not matched", response), HttpStatus.BAD_REQUEST);
-        }}
+        }
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Object> viewCust(@PathVariable String id){
         try{
