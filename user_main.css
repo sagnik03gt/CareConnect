@@ -14,9 +14,6 @@ button a {
 button a:hover {
   color: #f1f2f4;
 }
-nav {
-  z-index: 100000;
-}
 nav ul li a:hover {
   /* background-color: #002e5b; */
   color: #100351;

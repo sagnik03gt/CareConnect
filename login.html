@@ -90,16 +90,14 @@
         <div class="col align-items-center flex-col sign-in">
           <div class="form-wrapper align-items-center">
             <div class="form sign-in">
-              <form id="login-form">
+              <form  id="login-form">
                 <div class="input-group">
                   <i class="bx bxs-user"></i>
                   <input
-                    id="userEmail"
-                    type="email"
-                    placeholder="email"
-                    name="userEmail"
-                    required
-                  />
+                   id="userEmail"
+                   type="email" 
+                   placeholder="email" 
+                   name="userEmail" required  />
                 </div>
                 
                   <input
@@ -113,7 +111,7 @@
                 </div>
                 <button type="submit">Sign in</button>
               </form>
-
+             
               <span id="error-msg"></span>
               <p>
                 <b> Forgot password? </b>
@@ -166,7 +164,7 @@
     setTimeout(() => {
       container.classList.add("sign-in");
     }, 200);
-    //##################### SIGN UP FUNCTION ##########################
+//##################### SIGN UP FUNCTION ##########################
     const form = document.getElementById("signup_form");
     form.addEventListener("submit", postUserData);
 
@@ -237,8 +235,9 @@
         // Handle errors, display an error message, etc.
       }
     }
-
-    //return response.json();
+  
+  
+  //return response.json();
 
     //################################ Login ###############################
     const loginForm = document.getElementById("login-form");
