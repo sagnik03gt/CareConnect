@@ -50,7 +50,6 @@ a {
   width: 100%;
   object-fit: cover;
   opacity: 0.9;
-  filter: brightness(30%);
 }
 
 .text {
@@ -72,21 +71,20 @@ h1 {
   color: azure;
 }
 
-.text button {
-  /* display: inline-block; */
-  border-color: white;
+.text a {
+  display: inline-block;
   font-size: 1rem;
   background: white;
-  padding: 1em 2em;
+  padding: 1em 3em;
   margin-top: 1rem;
   color: black;
   text-transform: uppercase;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
   transition: 0.2s;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-.text button:hover {
+.text a:hover {
   letter-spacing: 0.6rem;
 }
 /* video {

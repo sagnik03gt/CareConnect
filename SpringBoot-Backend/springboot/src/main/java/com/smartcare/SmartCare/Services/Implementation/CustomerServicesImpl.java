@@ -84,11 +84,12 @@ public class CustomerServicesImpl implements CustomerServices {
     }
 
     @Override
-    public Object login(String email, String password) {
+    public String login(String email, String password) {
         if(customerRepo.existsByemail(email)){
             String DbPassword = customerRepo.findpassword(email);
             if(DbPassword.equals(password)){
                 return "Successfully logged in";
+
             }
         }
         return "Wrong email or password";

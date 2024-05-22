@@ -223,19 +223,12 @@
         );
         const responseData = await response.json();
         console.log(responseData);
-        if(responseData){
-          window.location.href="/user_main.html"
-          localStorage.setItem('User',email);
-        }
         // Optionally, display a success message or redirect the user
       } catch (error) {
         console.error("Error:", error);
         // Handle errors, display an error message, etc.
-      }
-    }
-  
-  
-  //return response.json();
+    
+    //return response.json();
 
 //################################ Login ###############################
      const loginForm = document.getElementById('login-form');
