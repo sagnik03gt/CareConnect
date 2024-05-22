@@ -246,42 +246,7 @@
       }
     }
 
-<<<<<<< HEAD
-    //return response.json();
 
-    //################################ Login ###############################
-    document.getElementById("login-form").addEventListener("submit", login);
-    async function login(event) {
-      var email = document.getElementById("userEmail").value;
-      var password = document.getElementById("password").value;
-      event.preventDefault();
-      const data = { email, password };
-      console.log(data);
-      try {
-        const response = await fetch(
-          "http://localhost:6999/SmartCare/Customer/login",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
-        console.log(response);
-        const result = await response.json();
-        console.log(result);
-        // if(response.ok){
-        //   window.location.href="/user_main.html"
-        // }else{
-        //   document.getElementById('error-msg').textContent = 'Something went wrong.'
-        // }
-      } catch (error) {
-        console.error("Error :", error);
-        document.getElementById("error-msg").textContent = "Failed to Login.";
-      }
-    }
-=======
 //################################ Login ###############################
      const loginForm = document.getElementById('login-form');
      loginForm.addEventListener('submit',login);
