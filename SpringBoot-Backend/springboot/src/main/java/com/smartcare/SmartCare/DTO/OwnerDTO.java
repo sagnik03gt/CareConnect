@@ -13,11 +13,13 @@ public class OwnerDTO {
     private String address;
     private String dob;
     private String email;
+    private String latitude;
+    private String longitude;
     private String phoneNumber;
     private String ngoId;
     private String ngoAddress;
     private String password;
-    private String longitude;
-    private String latitude;
+    
+    
    
 }

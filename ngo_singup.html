@@ -216,8 +216,8 @@
                 (position) => {
                   // Resolve the promise with the location object
                   resolve({
-                    latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
+                    latitude: position.coords.latitude,
                   });
                 },
                 (error) => {
@@ -255,6 +255,31 @@
             );
           }
         });
+        try {
+          const location = await mainFunction();
+
+          const ownerData = {
+            ...data,
+            ...location,
+          };
+          console.log(ownerData);
+          const response = await fetch(
+            "http://localhost:6999/SmartCare/Owner/save",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(ownerData),
+            }
+          );
+          const responseData = await response.json();
+          console.log(responseData);
+          // Optionally, display a success message or redirect the user
+        } catch (error) {
+          console.error("Error:", error);
+          // Handle errors, display an error message, etc.
+        }
       }
     </script>
   </body>
