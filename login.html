@@ -233,6 +233,10 @@
         const responseData = await response.json();
         console.log(responseData);
         // Optionally, display a success message or redirect the user
+        if (responseData) {
+          localStorage.setItem("User", email);
+          window.location.href = "/user_main.html";
+        }
       } catch (error) {
         console.error("Error:", error);
         // Handle errors, display an error message, etc.
