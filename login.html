@@ -101,14 +101,15 @@
                     required
                   />
                 </div>
-                <div class="input-group">
-                  <i class="bx bxs-lock-alt"></i>
-
-                  <input 
-                  id="userPassword" 
-                  type="password" 
-                  placeholder="Password" 
-                  name="userPassword" required />
+                
+                  <input
+                    id="userPassword"
+                    type="password"
+                    placeholder="Password"
+                    name="userPassword"
+                    required
+                  />
+                  
                 </div>
                 <button type="submit">Sign in</button>
               </form>
@@ -226,9 +227,9 @@
         );
         const responseData = await response.json();
         console.log(responseData);
-        if(responseData){
-          window.location.href="/user_main.html"
-          localStorage.setItem('User',email);
+        if (responseData) {
+          window.location.href = "/user_main.html";
+          localStorage.setItem("User", email);
         }
         // Optionally, display a success message or redirect the user
       } catch (error) {
@@ -237,50 +238,49 @@
       }
     }
 
+    //return response.json();
 
-//################################ Login ###############################
-     const loginForm = document.getElementById('login-form');
-     loginForm.addEventListener('submit',login);
-   async function login(event){
+    //################################ Login ###############################
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", login);
+    async function login(event) {
+      var email = document.getElementById("userEmail").value;
+      var password = document.getElementById("userPassword").value;
+      var message = document.getElementById("error-msg");
 
-     var email = document.getElementById('userEmail').value;
-     var password = document.getElementById('userPassword').value;
-     var message = document.getElementById('error-msg');
-
-     event.preventDefault();
-     const formData = new FormData(loginForm);
+      event.preventDefault();
+      const formData = new FormData(loginForm);
       const data = Object.fromEntries(formData);
 
-    console.log(data);
-    try {
-      const res = await fetch("http://localhost:6999/SmartCare/Customer/login",{
-           method:"POST",
-           headers:{
-            'Content-Type':'application/json',
-           },
-           body:JSON.stringify(data),
-      });
-      const result = await res.json();
+      console.log(data);
+      try {
+        const res = await fetch(
+          "http://localhost:6999/SmartCare/Customer/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+        const result = await res.json();
 
-     console.log(res.status);
+        console.log(res.status);
 
-     console.log(result);
+        console.log(result);
 
-     if (result.success) { 
-      localStorage.setItem('User',email);
-      window.location.replace('/user_main.html'); 
-    } else {
-      
-      console.error("API call successful but data.success is false");
-      message.textContent= "* Invalid Email or Password."
-
+        if (result.success) {
+          localStorage.setItem("User", email);
+          window.location.replace("/user_main.html");
+        } else {
+          console.error("API call successful but data.success is false");
+          message.textContent = "* Invalid Email or Password.";
+        }
+      } catch (error) {
+        console.error("Error :", error);
+        document.getElementById("error-msg").textContent = "Failed to Login.";
+      }
     }
-      
-    } catch (error) {
-      console.error("Error :",error);
-      document.getElementById('error-msg').textContent = 'Failed to Login.'
-    }
-   }
-
   </script>
 </html>
