@@ -91,13 +91,12 @@
           <div class="form-wrapper align-items-center">
             <div class="form sign-in">
               <form  id="login-form">
-              <form  id="login-form">
                 <div class="input-group">
                   <i class="bx bxs-user"></i>
                   <input
                    id="userEmail"
                    type="email" 
-                   placeholder="email" 
+                   placeholder="Email" 
                    name="userEmail" required  />
                  
                 </div>
@@ -228,6 +227,7 @@
         const responseData = await response.json();
         console.log(responseData);
         // Optionally, display a success message or redirect the user
+        
       } catch (error) {
         console.error("Error:", error);
         // Handle errors, display an error message, etc.
