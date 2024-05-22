@@ -273,7 +273,7 @@
 
         console.log(result);
 
-        if (result.success) {
+        if (result) {
           localStorage.setItem("User", email);
           window.location.replace("/user_main.html");
         } else {

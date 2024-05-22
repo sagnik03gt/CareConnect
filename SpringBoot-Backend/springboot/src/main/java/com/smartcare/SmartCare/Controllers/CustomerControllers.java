@@ -37,7 +37,7 @@ public class CustomerControllers {
     }
     @PostMapping("/login")
     public ResponseEntity<Object> custLogin(@RequestBody CustLogin custLogin){
-        if (customerServices.login(custLogin.getUserEmail(),custLogin.getPassword())) {
+        if (customerServices.login(custLogin.getUserEmail(),custLogin.getUserPassword())) {
             return new ResponseEntity<>(true,HttpStatus.ACCEPTED);
         } else {
             return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
