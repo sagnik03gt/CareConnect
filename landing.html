@@ -38,4 +38,12 @@
       </div>
     </section>
   </body>
+  <script>
+    function getAuth(){
+      const auth = localStorage.getItem('User');
+      if(auth){
+        window.location.href= "/user_main.html";
+      }
+    }
+  </script>
 </html>
