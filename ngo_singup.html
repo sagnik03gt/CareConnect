@@ -275,7 +275,12 @@
           );
           const responseData = await response.json();
           console.log(responseData);
-          // Optionally, display a success message or redirect the user
+          if (responseData) {
+            localStorage.setItem("User", email);
+            localStorage.setItem("lat", location.latitude);
+            localStorage.setItem("long", location.longitude);
+            window.location.href = "Ngo_ui/index.html";
+          }
         } catch (error) {
           console.error("Error:", error);
           // Handle errors, display an error message, etc.
