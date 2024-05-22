@@ -101,17 +101,7 @@
                     required
                   />
                 </div>
-                <div class="input-group">
-                  <i class="bx bxs-lock-alt"></i>
-                  <<<<<<< HEAD
-                  <input
-                    id="password"
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    required
-                  />
-                  =======
+                
                   <input
                     id="userPassword"
                     type="password"
@@ -119,7 +109,7 @@
                     name="userPassword"
                     required
                   />
-                  >>>>>>> 75d0ad91bb99ffa679ad29911d40282068f443fd
+                  
                 </div>
                 <button type="submit">Sign in</button>
               </form>
@@ -251,15 +241,20 @@
     //return response.json();
 
     //################################ Login ###############################
-    document.getElementById("login-form").addEventListener("submit", login);
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", login);
     async function login(event) {
       var email = document.getElementById("userEmail").value;
-      var password = document.getElementById("password").value;
+      var password = document.getElementById("userPassword").value;
+      var message = document.getElementById("error-msg");
+
       event.preventDefault();
-      const data = { email, password };
+      const formData = new FormData(loginForm);
+      const data = Object.fromEntries(formData);
+
       console.log(data);
       try {
-        const response = await fetch(
+        const res = await fetch(
           "http://localhost:6999/SmartCare/Customer/login",
           {
             method: "POST",
@@ -269,14 +264,19 @@
             body: JSON.stringify(data),
           }
         );
-        console.log(response);
-        const result = await response.json();
+        const result = await res.json();
+
+        console.log(res.status);
+
         console.log(result);
-        // if(response.ok){
-        //   window.location.href="/user_main.html"
-        // }else{
-        //   document.getElementById('error-msg').textContent = 'Something went wrong.'
-        // }
+
+        if (result.success) {
+          localStorage.setItem("User", email);
+          window.location.replace("/user_main.html");
+        } else {
+          console.error("API call successful but data.success is false");
+          message.textContent = "* Invalid Email or Password.";
+        }
       } catch (error) {
         console.error("Error :", error);
         document.getElementById("error-msg").textContent = "Failed to Login.";
