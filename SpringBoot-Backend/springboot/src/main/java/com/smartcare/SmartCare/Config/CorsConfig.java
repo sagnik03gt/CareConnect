@@ -3,10 +3,12 @@ package com.smartcare.SmartCare.Config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class CorsConfig {
+@EnableWebMvc //adding this
+public class CorsConfig implements WebMvcConfigurer{
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
@@ -15,6 +17,8 @@ public class CorsConfig {
                 registry.addMapping("/**")
                         .allowedOrigins("http://127.0.0.1:5500") // Replace with your web page's origin
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedHeaders("Authorization", "Content-Type")
+                        .maxAge(3600)
                         .allowCredentials(true);
             }
         };

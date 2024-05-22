@@ -9,5 +9,5 @@ public interface CustomerServices {
     Object viewCust(String userId);
     String deleteCust(String userId);
     String checkEmail(String email);
-    String login(String email, String password);
+    Object login(String email, String password);
 }
