@@ -27,4 +27,7 @@ public interface OwnerRepo extends JpaRepository<Owner,String> {
 
     @Query(value = "select count(agent_id) from agent where owner_id=:id",nativeQuery = true)
     int totalNgoMembers(String id);
+
+    @Query(value = "select password from owner where ngo_id =:ngoId",nativeQuery = true)
+    String findPassword(String ngoId);
 }

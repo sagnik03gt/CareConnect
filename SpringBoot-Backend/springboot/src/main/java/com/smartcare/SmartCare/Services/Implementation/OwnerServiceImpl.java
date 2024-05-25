@@ -175,4 +175,15 @@ public class OwnerServiceImpl implements OwnerServices {
             throw new FileNotFoundException(ngoId + " ngo owner has not submitted aadhar card yet");
         }
     }
+
+    @Override
+    public Boolean ownerLogin(String ngoId, String ngoPassword) {
+        if(ownerRepo.existsByngoId(ngoId)){
+            String DbPassword = ownerRepo.findPassword(ngoId);
+            if(DbPassword.equals(ngoPassword)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
