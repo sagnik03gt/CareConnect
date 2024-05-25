@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #56ed79;
-  --secondary-color: #3c99f6;
+  --primary-color: #74e8f5;
+  --secondary-color: #29ef88;
   --black: #000000;
   --white: #ffffff;
   --gray: #efefef;
@@ -105,9 +105,6 @@ body {
   color: var(--white);
   font-size: 1.2rem;
   outline: none;
-}
-#sign_up {
-  background-color: var(--secondary-color);
 }
 
 .form p {
@@ -294,6 +291,9 @@ body {
     transform: none;
     right: 0;
   }
+  #sign_up {
+    background-color: #29ef88;
+  }
 
   /* .container.sign-in .col.sign-up {
         transform: translateY(100%);
@@ -358,6 +358,6 @@ body {
 }
 #error-msg{
   color: red;
+  font-size: 0.8rem;
   font-weight: bold;
-  font-size: 10px;
 }

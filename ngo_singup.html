@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="ngo_signup.css" />
-    <script>
+    <!-- <script>
       //console.log(navigator.geolocation.getCurrentPosition);
       async function getLocation() {
         if (navigator.geolocation) {
@@ -31,7 +31,7 @@
       }
 
       // Usage
-    </script>
+    </script> -->
   </head>
   <body>
     <!-- <h3 class="title">NGO'S Owner And Agent Login</h3> -->
@@ -203,40 +203,66 @@
           return "Date of birth cannot be in the future.";
         }
 
-        // (Optional) Check if the age is within a specific range
-        const minAge = 18;
-        const maxAge = 100;
-        const age = today.getFullYear() - dobDate.getFullYear();
-        const ageMonth = today.getMonth() - dobDate.getMonth();
-        const ageDay = today.getDate() - dobDate.getDate();
-
-        if (
-          age < minAge ||
-          (age === minAge && ageMonth < 0) ||
-          (age === minAge && ageMonth === 0 && ageDay < 0)
-        ) {
-          return `Age must be at least ${minAge} years.`;
-        }
-        if (
-          age > maxAge ||
-          (age === maxAge && ageMonth > 0) ||
-          (age === maxAge && ageMonth === 0 && ageDay > 0)
-        ) {
-          return `Age must be less than ${maxAge} years.`;
-        }
-
-        // All validations passed
-        console.log(getLocation());
-
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
+        console.log(data);
 
-        //location
+        // Function to get user's real-time location
+        async function getUserLocation() {
+          return new Promise((resolve, reject) => {
+            // Check if geolocation is available
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                (position) => {
+                  // Resolve the promise with the location object
+                  resolve({
+                    longitude: position.coords.longitude,
+                    latitude: position.coords.latitude,
+                  });
+                },
+                (error) => {
+                  // Reject the promise if there's an error
+                  reject(error);
+                }
+              );
+            } else {
+              // Geolocation not supported
+              reject(
+                new Error("Geolocation is not supported by this browser.")
+              );
+            }
+          });
+        }
 
-        //const location = getLocation();
-        // console.log(location);
+        // Async function using the getUserLocation function
+        async function mainFunction() {
+          try {
+            const location = await getUserLocation();
+            console.log("User Location:", location);
+            return location;
+          } catch (error) {
+            console.error("Error getting location:", error);
+            // Handle the error as needed
+          }
+        }
 
+        // Call the main function
+        mainFunction().then((location) => {
+          // Use the location object as needed
+          if (location) {
+            console.log(
+              `Latitude: ${location.latitude}, Longitude: ${location.longitude}`
+            );
+          }
+        });
         try {
+          const location = await mainFunction();
+
+          const ownerData = {
+            ...data,
+            ...location,
+          };
+          console.log(ownerData);
           const response = await fetch(
             "http://localhost:6999/SmartCare/Owner/save",
             {
@@ -249,7 +275,13 @@
           );
           const responseData = await response.json();
           console.log(responseData);
-          // Optionally, display a success message or redirect the user
+          if (responseData) {
+            localStorage.setItem("User", email);
+            localStorage.setItem("lat", location.latitude);
+            localStorage.setItem("long", location.longitude);
+            localStorage.setItem("ownerid", responseData.ownerId);
+            //window.location.href = "Ngo_ui/index.html";
+          }
         } catch (error) {
           console.error("Error:", error);
           // Handle errors, display an error message, etc.

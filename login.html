@@ -76,7 +76,13 @@
                             <i class='bx bxs-lock-alt'></i>
                             <input type="password" placeholder="Confirm password" required>
                         </div> -->
-                <button type="submit" id="sign_up">Sign up</button>
+                <button
+                  type="submit"
+                  style="background-color: #29ef88"
+                  id="sign_up"
+                >
+                  Sign up
+                </button>
               </form>
               <p>
                 <span> Already have an account? </span>
@@ -90,30 +96,32 @@
         <div class="col align-items-center flex-col sign-in">
           <div class="form-wrapper align-items-center">
             <div class="form sign-in">
-              <form  id="login-form">
+              <form id="login-form">
                 <div class="input-group">
                   <i class="bx bxs-user"></i>
                   <input
-                   id="userEmail"
-                   type="email" 
-                   placeholder="email" 
-                   name="userEmail" required  />
+                    id="userEmail"
+                    type="email"
+                    placeholder="Email"
+                    name="userEmail"
+                    required
+                  />
                 </div>
                 <div class="input-group">
                   <i class="bx bxs-lock-alt"></i>
-                  <input 
-                  id="userPassword" 
-                  type="password" 
-                  placeholder="Password" 
-                  name="userPassword" required />
+                  <input
+                    id="userPassword"
+                    type="password"
+                    placeholder="Password"
+                    name="userPassword"
+                    required
+                  />
                 </div>
                 <button type="submit">Sign in</button>
               </form>
-             
+
               <span id="error-msg"></span>
-              <p>
-                <b> Forgot password? </b>
-              </p>
+
               <p>
                 <span> Don't have an account? </span>
                 <b onclick="toggle()" class="pointer"> Sign up here </b>
@@ -162,7 +170,8 @@
     setTimeout(() => {
       container.classList.add("sign-in");
     }, 200);
-//##################### SIGN UP FUNCTION ##########################
+    //##################### SIGN UP FUNCTION ##########################
+    //##################### SIGN UP FUNCTION ##########################
     const form = document.getElementById("signup_form");
     form.addEventListener("submit", postUserData);
 
@@ -223,53 +232,58 @@
         );
         const responseData = await response.json();
         console.log(responseData);
-        if(responseData){
-          window.location.href="/user_main.html"
-          localStorage.setItem('User',email);
-        }
         // Optionally, display a success message or redirect the user
+        if (responseData) {
+          localStorage.setItem("User", email);
+          window.location.href = "/user_main.html";
+        }
       } catch (error) {
         console.error("Error:", error);
         // Handle errors, display an error message, etc.
       }
     }
-  
-  
-  //return response.json();
 
-//################################ Login ###############################
-   document.getElementById('login-form').addEventListener('submit',login);
-   async function login(event){
-     var email = document.getElementById('userEmail').value;
-     var password = document.getElementById('userPassword').value;
-     event.preventDefault();
-    const data = {email,password};
-    console.log(data);
-    try {
-      const res = await fetch("http://localhost:6999/SmartCare/Customer/login",{
-           method:"POST",
-           headers:{
-            'Content-Type':'application/json',
-           },
-           body:JSON.stringify(data),
-      });
-      const result = await res.json();
+    //################################ Login ###############################
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", login);
+    async function login(event) {
+      var email = document.getElementById("userEmail").value;
+      var password = document.getElementById("userPassword").value;
+      var message = document.getElementById("error-msg");
 
-     console.log(res.status);
+      event.preventDefault();
+      const formData = new FormData(loginForm);
+      const data = Object.fromEntries(formData);
 
-     console.log(result);
+      console.log(data);
+      try {
+        const res = await fetch(
+          "http://localhost:6999/SmartCare/Customer/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+        const result = await res.json();
 
-     if(result.success){
-          window.location.href="/user_main.html"
-       }else{
-         document.getElementById('error-msg').textContent = "* Invalid Email or Password";
-       }
-      
-    } catch (error) {
-      console.error("Error :",error);
-      document.getElementById('error-msg').textContent = 'Failed to Login.'
+        console.log(res.status);
+
+        console.log(result);
+
+        if (result) {
+          localStorage.setItem("User", email);
+          window.location.replace("/user_main.html");
+        } else {
+          console.error("API call successful but data.success is false");
+          message.textContent = "* Invalid Email or Password.";
+        }
+      } catch (error) {
+        console.error("Error :", error);
+        document.getElementById("error-msg").textContent = "Failed to Login.";
+      }
     }
-   }
-
   </script>
 </html>

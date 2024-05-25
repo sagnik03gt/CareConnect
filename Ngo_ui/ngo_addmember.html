@@ -89,23 +89,28 @@
           <div class="row justify-content-center">
             <div class="col-md-6">
               <h2 class="text-center mb-4">ADD MEMBER</h2>
-              <form id="member_form">
+              <form action="#" id="member_form">
+                <div class="form-group">
+                  <label for="id-field">Agent id</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="agentId"
+                    name="agentId"
+                    placeholder="Enter Agent ID"
+                    required
+                  />
+                </div>
+
                 <div class="form-group">
                   <label for="name-field">Member Name</label>
                   <input
                     type="text"
                     class="form-control"
+                    name="name"
                     id="name-field"
                     placeholder="Enter your name"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="email-field"> Member Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email-field"
-                    placeholder="Enter your email"
+                    required
                   />
                 </div>
                 <div class="form-group">
@@ -113,31 +118,54 @@
                   <input
                     type="text"
                     class="form-control"
+                    name="phoneNumber"
                     id="phone-field"
                     placeholder="Enter your phone number"
+                    required
                   />
                 </div>
                 <div class="form-group">
-                  <label for="aadhar-field">Aadhar Number</label>
+                  <label for="email-field"> Member Email</label>
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
-                    id="aadhar-field"
-                    placeholder="Enter your Aadhar number"
+                    name="email"
+                    id="email-field"
+                    placeholder="Enter your email"
+                    required
                   />
                 </div>
+
                 <div class="form-group">
                   <label for="address-field">Address</label>
                   <textarea
                     class="form-control"
                     id="address-field"
+                    name="address"
                     rows="3"
                     placeholder="Enter your address"
+                    required
                   ></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">
-                  ADD
-                </button>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Passowrd"
+                    required
+                  />
+                </div>
+                <div class="button" style="text-align: center">
+                  <input
+                    class="button btn btn-primary"
+                    type="submit"
+                    value="ADD"
+                    style="width: 150px"
+                  />
+                </div>
               </form>
             </div>
           </div>
@@ -163,6 +191,89 @@
           main_div.style.marginLeft = "250px";
         }
       }
+
+      const form = document.getElementById("member_form");
+      form.addEventListener("submit", postAgentData);
+
+      async function postAgentData(event) {
+        event.preventDefault();
+        var fullname = document.getElementById("name-field").value;
+        var address = document.getElementById("address-field").value;
+        var email = document.getElementById("email-field").value;
+        var phone = document.getElementById("phone-field").value;
+        var agentid = document.getElementById("agentId").value;
+        var password = document.getElementById("password").value;
+
+        // Validate full name (e.g., not empty)
+        if (fullname === "") {
+          alert("Full Name is required.");
+          return false;
+        }
+
+        // Validate address (e.g., not empty)
+        if (address === "") {
+          alert("Address is required.");
+          return false;
+        }
+
+        // Validate email (simple email pattern)
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          alert("Please enter a valid email address.");
+          return false;
+        }
+
+        // Validate phone number (e.g., basic pattern, adjust as needed)
+        var phonePattern = /^\d{10}$/; // Example pattern for 10-digit phone numbers
+        if (!phonePattern.test(phone)) {
+          alert("Please enter a valid 10-digit phone number.");
+          return false;
+        }
+
+        // Validate agent ID to start with "ngo"
+        if (!agentid.startsWith("ngo")) {
+          alert("Agent ID must start with 'ngo'.");
+          return false;
+        }
+
+        // Validate password (e.g., not empty)
+        if (password === "") {
+          alert("Password is required.");
+          return false;
+        }
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        console.log(data);
+
+        try {
+          const response = await fetch(
+            "http://localhost:6999/SmartCare/agent/save",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            }
+          );
+          const responseData = await response.json();
+          console.log(responseData);
+          // Optionally, display a success message or redirect the user
+          if (responseData) {
+            localStorage.setItem("User", email);
+            alert("Agent registered successfully");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          // Handle errors, display an error message, etc.
+        }
+      }
+
+      //console.log("s xgwdvwhw");
+      // Additional validations can be added here
+
+      // If all validations pass, allow form submission
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
