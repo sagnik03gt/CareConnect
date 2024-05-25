@@ -247,6 +247,11 @@
         console.log(data);
 
         try {
+          const ownerId = localStorage.getItem("ownerid");
+          const agentData = {
+            ownerId,
+            ...data,
+          };
           const response = await fetch(
             "http://localhost:6999/SmartCare/agent/save",
             {
@@ -254,7 +259,7 @@
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(data),
+              body: JSON.stringify(agentData),
             }
           );
           const responseData = await response.json();

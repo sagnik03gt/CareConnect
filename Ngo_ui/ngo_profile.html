@@ -150,6 +150,39 @@
           }
           main_div.style.marginLeft = "250px";
         }
+
+        async function fetchData() {
+          try {
+            // Make the API request
+            const response = await fetch(
+              "http://localhost:6999/SmartCare/Owner/...."
+            );
+
+            // Check if the response is OK (status code 200-299)
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Parse the JSON response
+            const data = await response.json();
+
+            // Use the data (e.g., log it to the console)
+            console.log(data);
+
+            // Return the data for further use
+            return data;
+          } catch (error) {
+            // Handle any errors that occurred during the fetch
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+          }
+        }
+
+        // Example usage:
+        const apiURL = "https://api.example.com/data";
+        fetchData(apiURL);
       }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
