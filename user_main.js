@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   restaurantContainer.addEventListener("scroll", updateButtonState);
   updateButtonState();
 });
-  function logOut(){
-    localStorage.removeItem('User');
-    window.location.href="/landing.html";
-  }
+function logOut() {
+  localStorage.removeItem("User");
+  window.location.href = "/index.html";
+}
