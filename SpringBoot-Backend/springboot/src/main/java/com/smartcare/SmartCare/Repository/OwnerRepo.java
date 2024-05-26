@@ -13,6 +13,7 @@ import java.util.Map;
 public interface OwnerRepo extends JpaRepository<Owner,String> {
     Boolean existsByngoId(String id);
     Owner findByownerId(String id);
+    Boolean existsByEmail(String email);
     @Query(value = "select * from agent where owner_id =:id",nativeQuery = true)
     List<Map<String,Object>> findAllAgentByOwnerId(String id);
 

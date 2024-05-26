@@ -84,8 +84,8 @@ public class OwnerServiceImpl implements OwnerServices {
 
     @Override
     public Object saveOwner(OwnerDTO ownerDTO) {
-        if(ownerRepo.existsByngoId(ownerDTO.getNgoId())){
-            return "ngo id already exists!";
+        if(ownerRepo.existsByngoId(ownerDTO.getNgoId()) && ownerRepo.existsByEmail(ownerDTO.getEmail())){
+            return "ngo id and email both are already exists!";
         }
         Owner owner = ownerRepo.save(OwnerHelper.convertIntoOwner(ownerDTO, new Owner()));
         redisTemplate.opsForHash().put(HashKeyForOwner, owner.getOwnerId(), RedisOwnerHelper.convertIntoRedisOwner(new RedisOwner(), owner));
