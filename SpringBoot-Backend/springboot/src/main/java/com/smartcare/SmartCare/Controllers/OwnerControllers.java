@@ -3,6 +3,7 @@ package com.smartcare.SmartCare.Controllers;
 import com.smartcare.SmartCare.DTO.CustomerDTO;
 import com.smartcare.SmartCare.DTO.CustomerDTOUpdate;
 import com.smartcare.SmartCare.DTO.OwnerDTO;
+import com.smartcare.SmartCare.DTO.OwnerLogin;
 import com.smartcare.SmartCare.Response.MappingResponse;
 import com.smartcare.SmartCare.Services.Implementation.CustomerServicesImpl;
 import com.smartcare.SmartCare.Services.Implementation.OwnerServiceImpl;
@@ -44,6 +45,14 @@ public class OwnerControllers {
             return new ResponseEntity<>(MappingResponse.mapUniversalResponse("Error while onboarding new ngo owner",response), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginOwner(@RequestBody OwnerLogin ownerLogin){
+        if(ownerService.ownerLogin(ownerLogin.getNgoId(), ownerLogin.getNgoPassword())){
+            return new ResponseEntity<>(true,HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
+    }
+
     @PostMapping("/upload-adhar-Card")
     public ResponseEntity<Object> UploadFile(@RequestParam("file") MultipartFile file,@RequestParam("ngoId") String ngoId){
         try{
