@@ -84,6 +84,9 @@ public class OwnerServiceImpl implements OwnerServices {
 
     @Override
     public Object saveOwner(OwnerDTO ownerDTO) {
+        if(ownerRepo.existsByngoId(ownerDTO.getNgoId()) && ownerRepo.existsByEmail(ownerDTO.getEmail())){
+            return "ngo id and email both are already exists!";
+        }
         Owner owner = ownerRepo.save(OwnerHelper.convertIntoOwner(ownerDTO, new Owner()));
         redisTemplate.opsForHash().put(HashKeyForOwner, owner.getOwnerId(), RedisOwnerHelper.convertIntoRedisOwner(new RedisOwner(), owner));
         log.info("saved to owner to db, ngo id is : " + ownerDTO.getNgoId());
@@ -174,5 +177,16 @@ public class OwnerServiceImpl implements OwnerServices {
         } else {
             throw new FileNotFoundException(ngoId + " ngo owner has not submitted aadhar card yet");
         }
+    }
+
+    @Override
+    public Boolean ownerLogin(String ngoId, String ngoPassword) {
+        if(ownerRepo.existsByngoId(ngoId)){
+            String DbPassword = ownerRepo.findPassword(ngoId);
+            if(DbPassword.equals(ngoPassword)){
+                return true;
+            }
+        }
+        return false;
     }
 }

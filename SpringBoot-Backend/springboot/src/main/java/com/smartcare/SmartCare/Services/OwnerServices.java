@@ -26,4 +26,6 @@ public interface OwnerServices {
 
     List<Map<String,Object>> findAllActiveMembers(String ngoId);
     Resource viewAadharCard(String ngoId) throws MalformedURLException, FileNotFoundException;
+
+    Boolean ownerLogin(String ngoId,String ngoPassword);
 }
