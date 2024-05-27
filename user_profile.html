@@ -123,6 +123,48 @@
     </div>
     <script>
       var main = document.getElementById("main_page_link");
+
+      // script.js
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Function to fetch data from the API
+        async function fetchData() {
+          try {
+            const response = await fetch(
+              "http://localhost:6999/SmartCare/Customer/fb577ec"
+            ); // Replace with your API URL
+            const data = await response.json();
+            displayData(data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+            document.getElementById("data-container").innerHTML =
+              "Error fetching data";
+          }
+        }
+
+        // Function to display data in the HTML
+        function displayData(data) {
+          const container = document.getElementById("data-container");
+          container.innerHTML = ""; // Clear previous data if any
+
+          // Assuming data is an array of objects
+          data.forEach((item) => {
+            const itemElement = document.createElement("div");
+            itemElement.className = "data-item";
+
+            // Customize based on your data structure
+            itemElement.innerHTML = `
+              <h2>${item.title}</h2>
+              <p>${item.description}</p>
+          `;
+
+            container.appendChild(itemElement);
+          });
+        }
+
+        // Fetch and display data when the page loads
+        fetchData();
+      });
     </script>
     <!-- <div class="container-fluid bg-light" id="user_profile_heading"></div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

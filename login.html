@@ -235,7 +235,8 @@
         // Optionally, display a success message or redirect the user
         if (responseData) {
           localStorage.setItem("User", email);
-          window.location.href = "/user_main.html";
+          localStorage.setItem("userId", responseData.response[0].userId);
+          //window.location.href = "/user_main.html";
         }
       } catch (error) {
         console.error("Error:", error);
@@ -275,7 +276,7 @@
 
         if (result) {
           localStorage.setItem("User", email);
-          window.location.replace("/user_main.html");
+          //window.location.replace("/user_main.html");
         } else {
           console.error("API call successful but data.success is false");
           message.textContent = "* Invalid Email or Password.";
