@@ -116,7 +116,8 @@
         
         console.log(data);
         try {
-          const response = await fetch("http://localhost:6999/SmartCare/Owner/login/",{
+          const response = await fetch("http://localhost:6999/SmartCare/Owner/login",
+          {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
