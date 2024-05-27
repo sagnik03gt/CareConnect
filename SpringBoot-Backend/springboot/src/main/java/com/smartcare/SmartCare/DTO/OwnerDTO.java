@@ -1,7 +1,6 @@
 package com.smartcare.SmartCare.DTO;
 
 
-//import jakarta.annotation.sql.DataSourceDefinitions;
 import lombok.*;
 
 @Setter
@@ -19,7 +18,4 @@ public class OwnerDTO {
     private String ngoId;
     private String ngoAddress;
     private String password;
-    
-    
-   
 }
