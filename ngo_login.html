@@ -34,26 +34,56 @@
 			login and the signup form -->
       <div class="form-section">
         <!-- login form -->
+        <form  id="ownerLogin">
         <div class="login-box">
           <input
-            type="email"
+            type="text"
+            id="ngoId"
             class="email ele"
-            placeholder="youremail@email.com"
+            name="ngoId"
+            placeholder="NGO Id"
+            required
           />
-          <input type="password" class="password ele" placeholder="password" />
-          <button class="clkbtn">Login</button>
+          <input 
+          id="ngoPassword"
+          name="ngoPassword"
+          type="password" 
+          class="password ele" 
+          placeholder="PASSWORD" 
+          required
+          />
+          <button type="submit" class="clkbtn">Login</button>
+        </form>
           <a href="ngo_singup.html" id="signup_link">Signup Here</a>
         </div>
-
+        <form  id="agentId">
         <div class="login-box">
           <input
-            type="email"
+            id="agentId"
+            name="agentId"
+            type="text"
             class="email ele"
-            placeholder="youremail@email.com"
+            placeholder="AGENT Id"
+            required
           />
-          <input type="password" class="password ele" placeholder="password" />
-          <button class="clkbtn">Login</button>
+          <input 
+           id="agentPassword"
+           name="agentPassword"
+           type="password" 
+           class="password ele" 
+           placeholder="PASSWORD"
+           required />
+           <input
+            id="ngoId"
+            name="ngotId"
+            type="text"
+            class="email ele"
+            placeholder="NGO Id"
+            required
+          />
+          <button type="S" class="clkbtn">Login</button>
         </div>
+      </form>
       </div>
     </div>
     <script>
@@ -71,6 +101,38 @@
         slider.classList.remove("moveslider");
         formSection.classList.remove("form-section-move");
       });
+         
+      const ownerForm = document.getElementById('ownerLogin');
+      ownerForm.addEventListener('submit',ownerlogin);
+
+      async function ownerlogin(event){
+        var ownerid = document.getElementById("ngoId").value;
+        var ownerpassword = document.getElementById("ngoPassword").value;
+         
+        event.preventDefault();
+
+        const ownerformdata = new FormData(ownerForm);
+        const data = Object.fromEntries(ownerformdata);
+        
+        console.log(data);
+        try {
+          const response = await fetch("http://localhost:6999/SmartCare/Owner/login/",{
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+          const result = await response.json();
+          console.log(result);
+
+        } catch (error) {
+          console.error("Error :", error);
+        }
+
+      }
+
+
     </script>
   </body>
 </html>

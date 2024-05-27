@@ -43,3 +43,7 @@ function logOut() {
   localStorage.removeItem("User");
   window.location.href = "/index.html";
 }
+ 
+function viewProfile(){
+  window.location.href = "/user_profile.html";
+}
