@@ -234,9 +234,10 @@
         console.log(responseData);
         // Optionally, display a success message or redirect the user
         if (responseData) {
+          
           localStorage.setItem("User", email);
           localStorage.setItem("userId", responseData.response[0].userId);
-          //window.location.href = "/user_main.html";
+          window.location.href = "/user_main.html";
         }
       } catch (error) {
         console.error("Error:", error);
