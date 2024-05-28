@@ -316,7 +316,7 @@
 
         if (result) {
           localStorage.setItem("User", email);
-          //window.location.replace("/user_main.html");
+          window.location.replace("/user_main.html");
         } else {
           console.error("API call successful but data.success is false");
           message.textContent = "* Invalid Email or Password.";

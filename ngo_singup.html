@@ -251,7 +251,7 @@
           const responseData = await response.json();
           console.log(responseData);
           if (responseData) {
-            localStorage.setItem("User", email);
+            localStorage.setItem("ngoemail", email);
             localStorage.setItem("ngolat", location.latitude);
             localStorage.setItem("ngolong", location.longitude);
             localStorage.setItem("ownerid", responseData.response[0].ownerId);
