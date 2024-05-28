@@ -31,4 +31,7 @@ public interface OwnerRepo extends JpaRepository<Owner,String> {
 
     @Query(value = "select password from owner where ngo_id =:ngoId",nativeQuery = true)
     String findPassword(String ngoId);
+
+    @Query(value = "select owner_id from owner where ngo_id=:ngoId",nativeQuery = true)
+    String findOwnerId(String ngoId);
 }

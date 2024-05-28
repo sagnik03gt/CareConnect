@@ -12,6 +12,7 @@ import com.smartcare.SmartCare.Redis.Model.RedisAgent;
 import com.smartcare.SmartCare.Repository.ActiveAgentRepo;
 import com.smartcare.SmartCare.Repository.AgentLogInHistoryRepo;
 import com.smartcare.SmartCare.Repository.AgentRepo;
+import com.smartcare.SmartCare.Repository.OwnerRepo;
 import com.smartcare.SmartCare.Services.AgentServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,9 @@ import java.util.Map;
 public class AgentServicesImpl implements AgentServices {
     @Autowired
     private AgentRepo agentRepo;
+
+    @Autowired
+    private OwnerRepo ownerRepo;
 
     @Autowired
     private ActiveAgentRepo activeAgentRepo;
@@ -85,18 +89,34 @@ public class AgentServicesImpl implements AgentServices {
     public Boolean logIn(String username,String password,String ngoId){
         if(agentRepo.existsByagentId(username)){  //checks whether the agents exist or not
             if((agentRepo.getPassByAgentId(username).equals(password)) ) { //checking given password with stored password
-                try{
-                    String agentStatus = activeAgentRepo.getStatus(username);
-                    if (agentStatus.equals("DEACTIVE")) { // find whether agent has already logged in or not and it means that agent is new
+                if(validateNgoIdWithGivenNgoId(ngoId,username)) {
+                    try {
+                        String agentStatus = activeAgentRepo.getStatus(username);
+                        if (agentStatus.equals("DEACTIVE")) { // find whether agent has already logged in or not and it means that agent is new
 
-                        //storing logging details
+                            //storing logging details
+                            AgentLogInHistory agentLogInHistory = new AgentLogInHistory();
+                            agentLogInHistory.setDateTime(new Date());
+                            agentLogInHistory.setNgoId(ngoId);
+                            agentLogInHistory.setAgentId(username);
+                            agentLogInHistoryRepo.save(agentLogInHistory);
+
+                            // stored agent information to sent request all online agent
+                            ActiveAgents activeAgents = new ActiveAgents();
+                            activeAgents.setStatus("ACTIVE");
+                            activeAgents.setNgoId(ngoId);
+                            activeAgents.setAgentId(username);
+                            activeAgentRepo.save(activeAgents);
+                            return true;
+                        }
+                    } catch (Exception e) {
+
+                        //same as previous but only for whose status is DEACTIVE
                         AgentLogInHistory agentLogInHistory = new AgentLogInHistory();
                         agentLogInHistory.setDateTime(new Date());
                         agentLogInHistory.setNgoId(ngoId);
                         agentLogInHistory.setAgentId(username);
                         agentLogInHistoryRepo.save(agentLogInHistory);
-
-                        // stored agent information to sent request all online agent
                         ActiveAgents activeAgents = new ActiveAgents();
                         activeAgents.setStatus("ACTIVE");
                         activeAgents.setNgoId(ngoId);
@@ -105,25 +125,18 @@ public class AgentServicesImpl implements AgentServices {
                         return true;
                     }
                 }
-                catch (Exception e){
-
-                    //same as previous but only for whose status is DEACTIVE
-                    AgentLogInHistory agentLogInHistory = new AgentLogInHistory();
-                    agentLogInHistory.setDateTime(new Date());
-                    agentLogInHistory.setNgoId(ngoId);
-                    agentLogInHistory.setAgentId(username);
-                    agentLogInHistoryRepo.save(agentLogInHistory);
-                    ActiveAgents activeAgents = new ActiveAgents();
-                    activeAgents.setStatus("ACTIVE");
-                    activeAgents.setNgoId(ngoId);
-                    activeAgents.setAgentId(username);
-                    activeAgentRepo.save(activeAgents);
-                    return true;
-                }
-
             }
         }
         return false;
+    }
+
+    private boolean validateNgoIdWithGivenNgoId(String ngoId,String username) {
+        try{
+            ownerRepo.findOwnerId(ngoId).equals(agentRepo.findOwnerIdByAgentId(username));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
