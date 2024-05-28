@@ -75,7 +75,7 @@
            required />
            <input
             id="ngoId"
-            name="ngotId"
+            name="ngoId"
             type="text"
             class="email ele"
             placeholder="NGO Id"
@@ -126,6 +126,7 @@
           });
           const result = await response.json();
           console.log(result);
+          
 
         } catch (error) {
           console.error("Error :", error);
@@ -148,7 +149,7 @@
           console.log(agentdata)
 
           try {
-            const res = await fetch("http://localhost:6999/SmartCare/agent/login/{agentid}/{agentpassword}/{ngoid}",
+            const res = await fetch(`http://localhost:6999/SmartCare/agent/login/${agentid}/${agentpassword}/${ngoid}`,
               {
                 method: "POST",
                 headers: {
