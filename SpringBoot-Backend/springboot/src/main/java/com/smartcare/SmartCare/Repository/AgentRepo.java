@@ -19,4 +19,7 @@ public interface AgentRepo extends JpaRepository<Agent,String> {
 
     @Query(value = "select name,phone_number from agent where agent_id=:id",nativeQuery = true)
     Map<String,Object> getActiveMembersNameAndPhone(String id);
+
+    @Query(value = "select owner_id from agent where agent_id =:agentId",nativeQuery = true)
+    String findOwnerIdByAgentId(String agentId);
 }
