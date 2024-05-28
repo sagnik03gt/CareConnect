@@ -148,12 +148,11 @@
           const agentdata = Object.fromEntries(agentformdata);
           console.log(agentdata)
 
-          var agentid = agentdata.agentId;
+        var agentid = agentdata.agentId;
         var agentpassword = agentdata.agentPassword;
         var ngoid = agentdata.ngoId;
 
-          const apiurl =`http://localhost:6999/SmartCare/agent/login/${agentid}/${agentpassword}/${ngoid}`;
-
+         
           try {
             const res = await fetch(`http://localhost:6999/SmartCare/agent/login/${agentid}/${agentpassword}/${ngoid}`,
               {
@@ -166,7 +165,7 @@
             );
             const responsedata = await res.json();
             console.log(responsedata);
-            if(true){
+            if(responsedata){
               window.location.href="Agent_ui/index.html";
             }
           } catch (error) {
