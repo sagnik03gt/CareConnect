@@ -126,6 +126,9 @@
           });
           const result = await response.json();
           console.log(result);
+          if(result){
+            window.location.href="Ngo_ui/index.html"
+          }
 
         } catch (error) {
           console.error("Error :", error);
@@ -141,6 +144,7 @@
         var agentpassword = document.getElementById('agentPassword').value
         var ngoid = document.getElementById('ngoId').value
 
+
           event.preventDefault();
 
           const agentformdata = new FormData(agentForm);
@@ -148,7 +152,7 @@
           console.log(agentdata)
 
           try {
-            const res = await fetch("http://localhost:6999/SmartCare/agent/login/{agentid}/{agentpassword}/{ngoid}",
+            const res = await fetch(`http://localhost:6999/SmartCare/agent/login/${agentid}/${agentpassword}/${ngoid}`,
               {
                 method: "POST",
                 headers: {
