@@ -252,8 +252,8 @@
           console.log(responseData);
           if (responseData) {
             localStorage.setItem("User", email);
-            localStorage.setItem("lat", location.latitude);
-            localStorage.setItem("long", location.longitude);
+            localStorage.setItem("ngolat", location.latitude);
+            localStorage.setItem("ngolong", location.longitude);
             localStorage.setItem("ownerid", responseData.response[0].ownerId);
             //window.location.href = "Ngo_ui/index.html";
             window.location.href = "Ngo_ui/index.html";
