@@ -140,9 +140,7 @@
       agentForm.addEventListener('submit',agentlogin);
 
       async function agentlogin(event){
-        var agentid = document.getElementById('agentId').value;
-        var agentpassword = document.getElementById('agentPassword').value
-        var ngoid = document.getElementById('ngoId').value
+        
 
 
           event.preventDefault();
@@ -150,6 +148,12 @@
           const agentformdata = new FormData(agentForm);
           const agentdata = Object.fromEntries(agentformdata);
           console.log(agentdata)
+
+          var agentid = agentdata.agentId;
+        var agentpassword = agentdata.agentPassword;
+        var ngoid = agentdata.ngoId;
+
+          const apiurl =`http://localhost:6999/SmartCare/agent/login/${agentid}/${agentpassword}/${ngoid}`;
 
           try {
             const res = await fetch(`http://localhost:6999/SmartCare/agent/login/${agentid}/${agentpassword}/${ngoid}`,
@@ -163,6 +167,9 @@
             );
             const responsedata = await res.json();
             console.log(responsedata);
+            if(true){
+              window.location.href="Agent_ui/index.html";
+            }
           } catch (error) {
             console.error("Error :", error);
           }
