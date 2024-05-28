@@ -56,7 +56,7 @@
         </form>
           <a href="ngo_singup.html" id="signup_link">Signup Here</a>
         </div>
-        <form  id="agentId">
+        <form  id="agenLogin">
         <div class="login-box">
           <input
             id="agentId"
@@ -81,7 +81,7 @@
             placeholder="NGO Id"
             required
           />
-          <button type="S" class="clkbtn">Login</button>
+          <button type="submit" class="clkbtn">Login</button>
         </div>
       </form>
       </div>
@@ -112,7 +112,7 @@
         event.preventDefault();
 
         const ownerformdata = new FormData(ownerForm);
-        const data = Object.fromEntries(ownerformdata);
+        const ownerdata = Object.fromEntries(ownerformdata);
         
         console.log(data);
         try {
@@ -133,6 +133,36 @@
 
       }
 
+      const agentForm = document.getElementById('agenLogin');
+      agentForm.addEventListener('submit',agentlogin);
+
+      async function agentlogin(event){
+        var agentid = document.getElementById('agentId').value;
+        var agentpassword = document.getElementById('agentPassword').value
+        var ngoid = document.getElementById('ngoId').value
+
+          event.preventDefault();
+
+          const agentformdata = new FormData(agentForm);
+          const agentdata = Object.fromEntries(agentformdata);
+          console.log(agentdata)
+
+          try {
+            const res = await fetch("http://localhost:6999/SmartCare/agent/login",
+              {
+                method: "POST",
+                headers: {
+              "Content-Type": "application/json",
+              },
+               body: JSON.stringify(agentdata),
+               }
+            );
+            const responsedata = await res.json();
+            console.log(responsedata);
+          } catch (error) {
+            console.error("Error :", error);
+          }
+      }
 
     </script>
   </body>
