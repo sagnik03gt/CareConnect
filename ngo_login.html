@@ -74,7 +74,7 @@
            placeholder="PASSWORD"
            required />
            <input
-            id="ngoId"
+            id="ngoId2"
             name="ngotId"
             type="text"
             class="email ele"
@@ -139,7 +139,7 @@
       async function agentlogin(event){
         var agentid = document.getElementById('agentId').value;
         var agentpassword = document.getElementById('agentPassword').value
-        var ngoid = document.getElementById('ngoId').value
+        var ngoid = document.getElementById('ngoId2').value
 
           event.preventDefault();
 
@@ -148,7 +148,7 @@
           console.log(agentdata)
 
           try {
-            const res = await fetch("http://localhost:6999/SmartCare/agent/login/{agentid}/{agentpassword}/{ngoid}",
+            const res = await fetch(`http://localhost:6999/SmartCare/agent/login/${agentid}/${agentpassword}/${ngoid}`,
               {
                 method: "POST",
                 headers: {
