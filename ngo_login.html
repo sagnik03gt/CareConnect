@@ -126,7 +126,9 @@
           });
           const result = await response.json();
           console.log(result);
-          
+          if(result){
+            window.location.href="Ngo_ui/index.html"
+          }
 
         } catch (error) {
           console.error("Error :", error);
@@ -141,6 +143,7 @@
         var agentid = document.getElementById('agentId').value;
         var agentpassword = document.getElementById('agentPassword').value
         var ngoid = document.getElementById('ngoId2').value
+
 
           event.preventDefault();
 
