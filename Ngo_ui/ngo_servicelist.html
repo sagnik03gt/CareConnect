@@ -48,9 +48,10 @@
             width="30px"
           />
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <button class="dropdown-item" href="ngo_profile.html">
+              My Profile
+            </button>
+            <button class="dropdown-item" onclick="logOut()">Log Out</button>
           </div>
         </div>
       </nav>
@@ -103,6 +104,10 @@
           }
           main_div.style.marginLeft = "250px";
         }
+      }
+      function logOut() {
+        localStorage.removeItem("ngoemail");
+        window.location.href = "/ngo_login.html";
       }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
