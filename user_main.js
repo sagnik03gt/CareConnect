@@ -89,14 +89,14 @@ mainFunction();
 
 const fetchData = async () => {
   const baseUrl = "http://localhost:6999/SmartCare/request/nearestNgo";
-  const longitude = localStorage.getItem("userlong");
-  const latitude = localStorage.getItem("userlat");
+  const longitude = "88.4432"
+  const latitude = "22.6420"
 
   // Check if longitude and latitude are available
-  if (!longitude || !latitude) {
-    console.error("Longitude or latitude is not available in local storage.");
-    return;
-  }
+  // if (!longitude || !latitude) {
+  //   console.error("Longitude or latitude is not available in local storage.");
+  //   return;
+  // }
 
   // Construct the API URL
   const apiUrl = `${baseUrl}/${longitude}/${latitude}`;
@@ -112,11 +112,11 @@ const fetchData = async () => {
     });
 
     // Check if the response is okay
-    if (!response.ok) {
-      throw new Error(
-        `Server error: ${response.status} - ${response.statusText}`
-      );
-    }
+    // if (!response.ok) {
+    //   throw new Error(
+    //     `Server error: ${response.status} - ${response.statusText}`
+    //   );
+    // }
 
     // Parse and log the JSON response
     const data = await response.json();
