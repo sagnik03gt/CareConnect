@@ -48,6 +48,45 @@ function viewProfile() {
   window.location.href = "/user_profile.html";
 }
 
+async function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    // Check if geolocation is available
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // Resolve the promise with the location object
+          resolve({
+            longitude: position.coords.longitude,
+            latitude: position.coords.latitude,
+          });
+        },
+        (error) => {
+          // Reject the promise if there's an error
+          reject(error);
+        }
+      );
+    } else {
+      // Geolocation not supported
+      reject(new Error("Geolocation is not supported by this browser."));
+    }
+  });
+}
+
+// Async function using the getUserLocation function
+async function mainFunction() {
+  try {
+    const location = await getUserLocation();
+    console.log("User Location:", location);
+    localStorage.setItem("userlat", location.latitude);
+    localStorage.setItem("userlong", location.longitude);
+    return location;
+  } catch (error) {
+    console.error("Error getting location:", error);
+    // Handle the error as needed
+  }
+}
+mainFunction();
+
 const fetchData = async () => {
   const baseUrl = "http://localhost:6999/SmartCare/request/nearestNgo";
   const longitude = localStorage.getItem("userlong");
