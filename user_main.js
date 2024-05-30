@@ -89,8 +89,8 @@ mainFunction();
 
 const fetchData = async () => {
   const baseUrl = "http://localhost:6999/SmartCare/request/nearestNgo";
-  const longitude = "88.4432"
-  const latitude = "22.6420"
+  const longitude = localStorage.getItem("userlong");
+  const latitude = localStorage.getItem("userlat");
 
   // Check if longitude and latitude are available
   // if (!longitude || !latitude) {

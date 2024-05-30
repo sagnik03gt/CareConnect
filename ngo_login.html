@@ -166,6 +166,7 @@
             const responsedata = await res.json();
             console.log(responsedata);
             if(responsedata){
+              localStorage.setItem("agentId",agentid);
               window.location.href="Agent_ui/index.html";
             }
           } catch (error) {
