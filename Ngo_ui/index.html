@@ -54,7 +54,7 @@
             width="30px"
           />
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button class="dropdown-item" href="ngo_profile.html">
+            <button class="dropdown-item" onclick="profile()">
               My Profile
             </button>
             <button class="dropdown-item" onclick="logOut()">Log Out</button>
@@ -187,8 +187,11 @@
         }
       }
       function logOut() {
-        localStorage.removeItem("ngoemail");
+        localStorage.removeItem("ngoid");
         window.location.href = "/ngo_login.html";
+      }
+      function profile() {
+        window.location.href = "ngo_profile.com";
       }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

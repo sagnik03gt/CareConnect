@@ -234,7 +234,7 @@
         console.log(responseData);
         // Optionally, display a success message or redirect the user
         if (responseData) {
-          localStorage.setItem("useremail", email);
+          // localStorage.setItem("useremail", email);
           localStorage.setItem("userid", responseData.response[0].userId);
           window.location.href = "/user_main.html";
         }
@@ -275,7 +275,7 @@
         console.log(result);
 
         if (result) {
-          localStorage.setItem("userid", result.response[0].userId);
+          // localStorage.setItem("userid", result.response[0].userId);
           localStorage.setItem("useremail", email);
           window.location.replace("/user_main.html");
         } else {

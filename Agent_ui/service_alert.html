@@ -98,7 +98,7 @@
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title" id="acc">Username with location</h5>
-                      <button class="btn btn-success" id="accept">ACCEPT</button>
+                      <button class="btn btn-success" id="accept" onclick="accept()">ACCEPT</button>
                       <button class="btn btn-danger" id="accept">DECLINE</button>
                     </div>
                   </div>
@@ -110,7 +110,19 @@
                   <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" id="acc">Username with location</h5>
-                        <button class="btn btn-success" id="accept">ACCEPT</button>
+                        <button class="btn btn-success" id="accept" onclick="accept()">ACCEPT</button>
+                        <button class="btn btn-danger" id="accept">DECLINE</button>
+                    </div>
+                  </div>
+          
+                </div>
+          
+                <!-- <div class="col-lg-12">
+          
+                  <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="acc">Username with location</h5>
+                        <button class="btn btn-success" id="accept" onclick="accept()">ACCEPT</button>
                         <button class="btn btn-danger" id="accept">DECLINE</button>
                     </div>
                   </div>
@@ -122,24 +134,12 @@
                   <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" id="acc">Username with location</h5>
-                        <button class="btn btn-success" id="accept">ACCEPT</button>
+                        <button class="btn btn-success" id="accept" onclick="accept()">ACCEPT</button>
                         <button class="btn btn-danger" id="accept">DECLINE</button>
                     </div>
                   </div>
           
-                </div>
-          
-                <div class="col-lg-12">
-          
-                  <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" id="acc">Username with location</h5>
-                        <button class="btn btn-success" id="accept">ACCEPT</button>
-                        <button class="btn btn-danger" id="accept">DECLINE</button>
-                    </div>
-                  </div>
-          
-                </div>
+                </div> -->
               </div>
       
     </div>
@@ -166,6 +166,9 @@
       function logOut() {
         localStorage.removeItem("agentId");
         window.location.href = "/ngo_login.html";
+      }
+      function accept(){
+        alert("Request Accepted!")
       }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

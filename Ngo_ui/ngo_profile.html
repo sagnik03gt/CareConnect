@@ -151,46 +151,61 @@
           }
           main_div.style.marginLeft = "250px";
         }
+      }
 
+      document.addEventListener("DOMContentLoaded", () => {
+        // API endpoint
+        baseurl = "http://localhost:6999/SmartCare/Customer";
+        userId = localStorage.getItem("userId");
+        const apiUrl = `http://localhost:6999/SmartCare/Customer/${userId}`;
+
+        // Function to fetch data from API
         async function fetchData() {
           try {
-            const ownerId = localStorage.getItem("ownerid");
-            // Make the API request
-            const response = await fetch(
-              "http://localhost:6999/SmartCare/Owner/$ownerId"
-            );
-
-            // Check if the response is OK (status code 200-299)
+            const response = await fetch(apiUrl);
             if (!response.ok) {
-              throw new Error(`HTTP error! Status: ${response.status}`);
+              throw new Error(
+                "Network response was not ok " + response.statusText
+              );
             }
-
-            // Parse the JSON response
             const data = await response.json();
-
-            // Use the data (e.g., log it to the console)
             console.log(data);
-
-            // Return the data for further use
-            return data;
+            displayData(data);
           } catch (error) {
-            // Handle any errors that occurred during the fetch
             console.error(
-              "There was a problem with the fetch operation:",
+              "There has been a problem with your fetch operation:",
               error
             );
           }
         }
-        fetchData();
 
-        // Example usage:
-        const apiURL = "https://api.example.com/data";
-        fetchData(apiURL);
-
-        function logOut() {
-          localStorage.removeItem("ngoemail");
-          window.location.href = "/ngo_login.html";
+        // Function to display data in HTML
+        function displayData(data) {
+          const username = document.getElementById("username");
+          username.innerHTML = data.response[0].username;
+          const dob = document.getElementById("dob");
+          dob.innerHTML = data.response[0].dob;
+          const address = document.getElementById("address");
+          address.innerHTML = data.response[0].address;
+          const useremail = document.getElementById("useremail");
+          useremail.innerHTML = data.response[0].email;
+          const contact = document.getElementById("contact");
+          contact.innerHTML = data.response[0].phoneNumber;
+          const password = document.getElementById("password");
+          password.innerHTML = data.response[0].password;
         }
+
+        // Call the fetchData function to get and display the data
+        fetchData();
+      });
+
+      // Example usage:
+      const apiURL = "https://api.example.com/data";
+      fetchData(apiURL);
+
+      function logOut() {
+        localStorage.removeItem("ngoemail");
+        window.location.href = "/ngo_login.html";
       }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

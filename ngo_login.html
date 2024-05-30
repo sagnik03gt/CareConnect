@@ -127,6 +127,7 @@
           const result = await response.json();
           console.log(result);
           if(result){
+            localStorage.setItem("ngoid",ownerdata.ngoId)
             window.location.href="Ngo_ui/index.html"
           }
 

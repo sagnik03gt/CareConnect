@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateButtonState();
 });
 function logOut() {
-  localStorage.removeItem("userid");
+  //localStorage.removeItem("userid");
   localStorage.removeItem("useremail");
   window.location.href = "/index.html";
 }
@@ -135,38 +135,10 @@ const fetchData = async () => {
   }
 };
 fetchData();
-// async function listNgos() {
-//   try {
-//     const lat = localStorage.getItem("userlat");
-//     const long = localStorage.getItem("userlong");
-//     const baseUrl = "http://localhost:6999/SmartCare/request/nearestNgo";
 
-//     const mainUrl = `${baseUrl}/${lat}/${long}`;
-//     console.log(mainUrl);
-//     const res = await fetch(`${baseUrl}/${long}/${lat}`, {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(data),
-//     });
-//     const result = await res.json();
-
-//     console.log(res.status);
-
-//     console.log(result);
-
-//     if (result) {
-//       localStorage.setItem("User", email);
-//       //window.location.replace("/user_main.html");
-//     } else {
-//       console.error("API call successful but data.success is false");
-//       message.textContent = "* Invalid Email or Password.";
-//     }
-//   } catch (error) {
-//     console.error("Error :", error);
-//     document.getElementById("error-msg").textContent = "Failed to Login.";
-//   }
-// }
-
-// listNgos();
+function requestNgo() {
+  alert("Your request has been sent to the NGO");
+}
+setTimeout(function () {
+  alert("Your request has been accepted");
+}, 30000);
