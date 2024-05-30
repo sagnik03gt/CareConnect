@@ -1,3 +1,4 @@
+
 package com.smartcare.SmartCare;
 
 import org.springframework.boot.SpringApplication;

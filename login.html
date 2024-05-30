@@ -275,7 +275,7 @@
         console.log(result);
 
         if (result) {
-          localStorage.setItem("userid", responseData.response[0].userId);
+          localStorage.setItem("userid", result.response[0].userId);
           localStorage.setItem("useremail", email);
           window.location.replace("/user_main.html");
         } else {
