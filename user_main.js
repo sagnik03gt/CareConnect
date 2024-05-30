@@ -74,71 +74,30 @@ async function getUserLocation() {
 }
 
 // Async function using the getUserLocation function
-async function mainFunction() {
-  try {
-    const location = await getUserLocation();
-    console.log("User Location:", location);
-    localStorage.setItem("userlat", location.latitude);
-    localStorage.setItem("userlong", location.longitude);
-    return location;
-  } catch (error) {
-    console.error("Error getting location:", error);
-    // Handle the error as needed
-  }
-}
-mainFunction();
-
-const fetchData = async () => {
-  const baseUrl = "http://localhost:6999/SmartCare/request/nearestNgo";
-  const longitude = localStorage.getItem("userlong");
-  const latitude = localStorage.getItem("userlat");
-
-  // Check if longitude and latitude are available
-  // if (!longitude || !latitude) {
-  //   console.error("Longitude or latitude is not available in local storage.");
-  //   return;
-  // }
-
-  // Construct the API URL
-  const apiUrl = `${baseUrl}/${longitude}/${latitude}`;
-  console.log(apiUrl);
-
-  try {
-    // Make the fetch request with appropriate headers
-    const response = await fetch(apiUrl, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    // Check if the response is okay
-    // if (!response.ok) {
-    //   throw new Error(
-    //     `Server error: ${response.status} - ${response.statusText}`
-    //   );
-    // }
-
-    // Parse and log the JSON response
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    // Handle network errors and other exceptions
-    if (error.name === "TypeError") {
-      console.error("Network error or invalid URL:", error);
-    } else {
-      console.error(
-        "There has been a problem with your fetch operation:",
-        error
+async function searchNgo() {
+  const location = await getUserLocation();
+  const lat = location.latitude;
+  const lon = location.longitude;
+  console.log(location, lat, lon);
+  if (lat && lon) {
+    try {
+      const response = await fetch(
+        `http://localhost:6999/SmartCare/request/nearestNgo/${lon}/${lat}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
+
+      console.log(response);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error", error);
+      document.getElementById("ngo_list").innerText = "No nearest NGO..";
     }
   }
-};
-fetchData();
-
-function requestNgo() {
-  alert("Your request has been sent to the NGO");
 }
-setTimeout(function () {
-  alert("Your request has been accepted");
-}, 30000);
+searchNgo();
