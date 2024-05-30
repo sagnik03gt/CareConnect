@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
   updateButtonState();
 });
 function logOut() {
-  localStorage.removeItem("User");
+  localStorage.removeItem("userid");
+  localStorage.removeItem("useremail");
   window.location.href = "/index.html";
 }
 

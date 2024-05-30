@@ -234,8 +234,8 @@
         console.log(responseData);
         // Optionally, display a success message or redirect the user
         if (responseData) {
-          localStorage.setItem("User", email);
-          localStorage.setItem("userId", responseData.response[0].userId);
+          localStorage.setItem("useremail", email);
+          localStorage.setItem("userid", responseData.response[0].userId);
           window.location.href = "/user_main.html";
         }
       } catch (error) {
@@ -275,7 +275,8 @@
         console.log(result);
 
         if (result) {
-          localStorage.setItem("User", email);
+          localStorage.setItem("userid", responseData.response[0].userId);
+          localStorage.setItem("useremail", email);
           window.location.replace("/user_main.html");
         } else {
           console.error("API call successful but data.success is false");

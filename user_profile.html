@@ -61,62 +61,67 @@
         </div>
         <div class="col-md-5 ml-6" id="user_profile_det">
           <div class="row mb-2 mt-2">
-            <div class="col-md-4 ml-2 pl-1 pt-1">
+            <div class="col-md-4 ml-2 pl-1 pt-1" style="color: black">
               <p>Name</p>
             </div>
-            <div class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded" id="username">
-            
-            </div>
+            <div
+              class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded"
+              id="username"
+            ></div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4 ml-2 pl-1 pt-1">
+            <div class="col-md-4 ml-2 pl-1 pt-1" style="color: black">
               <p>DOB</p>
             </div>
-            <div class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded">
-              abc
-            </div>
+            <div
+              class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded"
+              id="dob"
+            ></div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4 ml-2 pl-1 pt-1">
+            <div class="col-md-4 ml-2 pl-1 pt-1" style="color: black">
               <p>Address</p>
             </div>
-            <div class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded">
-              123
-            </div>
+            <div
+              class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded"
+              id="address"
+            ></div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4 ml-2 pl-1 pt-1">
+            <div class="col-md-4 ml-2 pl-1 pt-1" style="color: black">
               <p>Email</p>
             </div>
-            <div class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded" id="useremail">
-              
-            </div>
+            <div
+              class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded"
+              id="useremail"
+            ></div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4 ml-2 pl-1 pt-1">
+            <div class="col-md-4 ml-2 pl-1 pt-1" style="color: black">
               <p>Contact No.</p>
             </div>
-            <div class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded">
-              9765432345
-            </div>
+            <div
+              class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded"
+              id="contact"
+            ></div>
           </div>
-          <div class="row mb-2">
+          <!-- <div class="row mb-2">
             <div class="col-md-4 ml-2 pl-1 pt-1">
               <p>User_id</p>
             </div>
-            <div class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded">
-              9765432345
-            </div>
-          </div>
+            <div
+              class="col-md-6 ml-2 pl-1 pt-1 border border-success rounded"
+              id="userid"
+            ></div>
+          </div> -->
           <div class="row mb-2">
-            <div class="col-md-4 ml-2 pl-1 pt-1">
+            <div class="col-md-4 ml-2 pl-1 pt-1" style="color: black">
               <p>Password</p>
             </div>
             <div
               class="col-md-6 ml-2 pl-1 pt-1 mb-0 border border-success rounded"
-            >
-              9765432345
-            </div>
+              id="password"
+            ></div>
           </div>
         </div>
       </div>
@@ -127,42 +132,48 @@
       // script.js
 
       document.addEventListener("DOMContentLoaded", () => {
-        // Function to fetch data from the API
+        // API endpoint
+        baseurl = "http://localhost:6999/SmartCare/Customer";
+        userId = localStorage.getItem("userId");
+        const apiUrl = `http://localhost:6999/SmartCare/Customer/${userId}`;
+
+        // Function to fetch data from API
         async function fetchData() {
           try {
-            const response = await fetch(
-              "http://localhost:6999/SmartCare/Customer/fb577ec"
-            ); // Replace with your API URL
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+              throw new Error(
+                "Network response was not ok " + response.statusText
+              );
+            }
             const data = await response.json();
+            console.log(data);
             displayData(data);
           } catch (error) {
-            console.error("Error fetching data:", error);
-            document.getElementById("data-container").innerHTML =
-              "Error fetching data";
+            console.error(
+              "There has been a problem with your fetch operation:",
+              error
+            );
           }
         }
 
-        // Function to display data in the HTML
+        // Function to display data in HTML
         function displayData(data) {
-          const container = document.getElementById("data-container");
-          container.innerHTML = ""; // Clear previous data if any
-
-          // Assuming data is an array of objects
-          data.forEach((item) => {
-            const itemElement = document.createElement("div");
-            itemElement.className = "data-item";
-
-            // Customize based on your data structure
-            itemElement.innerHTML = `
-              <h2>${item.title}</h2>
-              <p>${item.description}</p>
-          `;
-
-            container.appendChild(itemElement);
-          });
+          const username = document.getElementById("username");
+          username.innerHTML = data.response[0].username;
+          const dob = document.getElementById("dob");
+          dob.innerHTML = data.response[0].dob;
+          const address = document.getElementById("address");
+          address.innerHTML = data.response[0].address;
+          const useremail = document.getElementById("useremail");
+          useremail.innerHTML = data.response[0].email;
+          const contact = document.getElementById("contact");
+          contact.innerHTML = data.response[0].phoneNumber;
+          const password = document.getElementById("password");
+          password.innerHTML = data.response[0].password;
         }
 
-        // Fetch and display data when the page loads
+        // Call the fetchData function to get and display the data
         fetchData();
       });
     </script>
@@ -171,8 +182,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
   </body>
-  <script>
-    
-   
-  </script>
+  <script></script>
 </html>
