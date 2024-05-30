@@ -15,9 +15,13 @@ public class RequestControllers {
     @Autowired
     private RequestServicesImpl requestServices;
     @GetMapping("/nearestNgo/{lon}/{lat}")
-    public ResponseEntity<List<NgoWithKms>> getNgo(@PathVariable double lon,
-                                                   @PathVariable double lat){
-        return new ResponseEntity<>(requestServices.sentNearestNgoWithDistance(lon,lat), HttpStatus.FOUND);
+    public ResponseEntity<Object> getNgo(@PathVariable double lon,
+                                                   @PathVariable double lat) {
+        try {
+            return new ResponseEntity<>(requestServices.sentNearestNgoWithDistance(lon,lat), HttpStatus.FOUND);
+        } catch (Exception ignored) {
+            return new ResponseEntity<>("No Nearest Ngo Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/book-ngo/{ngoId}/{custId}/{lon}/{lat}")
