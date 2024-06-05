@@ -52,9 +52,9 @@ public class RequestControllers {
         return new ResponseEntity<>(requestServices.gettingReqFromRedisForNgo(ngoid),HttpStatus.FOUND);
     }
 
-    @PostMapping("/sentReqToActiveAgent/{custId}")
-    public ResponseEntity<Object> sentReqToActiveAgent(@PathVariable String custId){
-        return new ResponseEntity<>(requestServices.sentReqToActiveAgent(custId),HttpStatus.OK);
+    @PostMapping("/sentReqToActiveAgent/{custId}/{ngoId}")
+    public ResponseEntity<Object> sentReqToActiveAgent(@PathVariable String custId,@PathVariable String ngoId){
+        return new ResponseEntity<>(requestServices.sentReqToActiveAgent(custId,ngoId),HttpStatus.OK);
     }
     @PostMapping("/accept/{agentId}")
     public ResponseEntity<Object> acceptRequest(@PathVariable String agentId){
