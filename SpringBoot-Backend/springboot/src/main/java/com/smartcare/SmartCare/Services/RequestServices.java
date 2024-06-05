@@ -19,6 +19,6 @@ public interface RequestServices {
     Object markedRequestAsClosed(String id);
     Object allRequest(String type,String id);
     Object gettingReqFromRedisForNgo(String ngoId);
-    String sentReqToActiveAgent(String custId);
+    String sentReqToActiveAgent(String custId,String ngoId);
     String acceptReq(String agentId);
 }

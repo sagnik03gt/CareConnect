@@ -100,13 +100,10 @@ public class RequestServicesImpl implements RequestServices {
 
     @Override
     public List<NgoWithKms> sentNearestNgoWithDistance(double longitude, double latitude) {
-
         //first of all find all nearest ngo and store them as list
         List<String> nearestNgoByLongLat = findNearestNgoByLongLat(longitude, latitude);
         //this list is used to store ngo name and distance from user location
         List<NgoWithKms> finalResultOfNgoWithKms = new ArrayList<>();
-
-
         //for debugging purpose, print or log the size nearest ngo's
         log.info(String.valueOf(nearestNgoByLongLat.size()));
 
@@ -114,25 +111,19 @@ public class RequestServicesImpl implements RequestServices {
         if(!nearestNgoByLongLat.isEmpty()) {
             for (int i = 0; i < nearestNgoByLongLat.size(); i++) {
                 NgoWithKms ngoWithKms = new NgoWithKms();
-
                 //getting the ngo's from nearestNgoByLongLat list
                 String ngoId = nearestNgoByLongLat.get(i);
                 log.info(ngoId);
-
                 //finding the longitude and latitude form owner table information where ngo location has been stored
                 Map<String, String> longLatByNgoId = ownerRepo.findLongLatByNgoId(ngoId);
-
                 //getting them separately
                 String longitude1 = longLatByNgoId.get("longitude");
                 String latitude1 = longLatByNgoId.get("latitude");
-
                 //calculating the distance using above longitude and latitude
                 double distanceFromUserCurrentLocation = calculateDistanceBetweenTwoLongLat(longitude, latitude, Double.parseDouble(longitude1), Double.parseDouble(latitude1));
-
                 //mapping the result with NgoWithKms class
                 ngoWithKms.setNgoName(ngoId);
                 ngoWithKms.setDistance(distanceFromUserCurrentLocation);
-
                 //as it is declared in the first, finally one result has completed, so
                 // it is time to add the result into finalResultOfNgoWithKms list
                 finalResultOfNgoWithKms.add(i, ngoWithKms);
@@ -140,18 +131,14 @@ public class RequestServicesImpl implements RequestServices {
             return finalResultOfNgoWithKms;
         }
         throw new RuntimeException("No Nearest Ngo is found");
-
     }
 
     @Override
     public String bookedNgo(String ngoId, String custId,String lon,String lat) {
         int totalActiveNgoMembers = activeAgentRepo.totalActiveNgoMembers(ngoId);
-
-
        // this is only for redis template usage
         Customer customer = new Customer();
         customer.setUserId(custId);
-
         if(totalActiveNgoMembers > 0){
             //first store this helping details into redis for fast speed
             //after the agent submit complete or done request then only the details has been stored into our database;
@@ -165,8 +152,6 @@ public class RequestServicesImpl implements RequestServices {
             redisHelpList.setNgoId(ngoId);
             //saving the details with customer id into redis
             redisTemplate.opsForHash().put(hashKeyForRequestSentNgo,ngoId,redisHelpList);
-
-
             // below code is for previous logic
             //sending the request to ngo's owner and active agent using kafka
             //kafka -> prevent uninterrupted database failure.
@@ -229,9 +214,12 @@ public class RequestServicesImpl implements RequestServices {
     }
 
     @Override
-    public String sentReqToActiveAgent(String custId) {
+    public String sentReqToActiveAgent(String custId,String ngoId) {
         acceptedAgent.clear();
-        kafkaTemplate.send(AppConstants.RequestTopicName,custId);
+        Map<String,String> userAndNgoDetails = new HashMap<>();
+        userAndNgoDetails.put("custId", custId);
+        userAndNgoDetails.put("ngoId", ngoId);
+        kafkaTemplate.send(AppConstants.RequestTopicName,userAndNgoDetails.toString());
         return "sending request to active agent...... \n waiting for agent side to accept your request....";
     }
 
